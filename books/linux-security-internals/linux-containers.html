@@ -1,0 +1,541 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Linux Containers · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="namespaces.html" />
+    
+    
+    <link rel="prev" href="dirtycow.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="about.html">
+            
+                <a href="about.html">
+            
+                    
+                    About Us
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="linuxarch/">
+            
+                <a href="linuxarch/">
+            
+                    
+                    Linux Architecture
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="linuxarch/kernel.html">
+            
+                <a href="linuxarch/kernel.html">
+            
+                    
+                    Kernel
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="linuxarch/processmanage.html">
+            
+                <a href="linuxarch/processmanage.html">
+            
+                    
+                    Process Management
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="linuxarch/protectionrings.html">
+            
+                <a href="linuxarch/protectionrings.html">
+            
+                    
+                    Protection Rings
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="linuxarch/syscalls.html">
+            
+                <a href="linuxarch/syscalls.html">
+            
+                    
+                    System Calls
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="linuxarch/memorymanage.html">
+            
+                <a href="linuxarch/memorymanage.html">
+            
+                    
+                    Memory Management
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="dirtycow.html">
+            
+                <a href="dirtycow.html">
+            
+                    
+                    Dirty Cow Demo
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5" data-path="linux-containers.html">
+            
+                <a href="linux-containers.html">
+            
+                    
+                    Linux Containers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="namespaces.html">
+            
+                <a href="namespaces.html">
+            
+                    
+                    Namespaces
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="linux-namespaces.html">
+            
+                <a href="linux-namespaces.html">
+            
+                    
+                    What are the Linux namespaces?
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="seccomp-bpf.html">
+            
+                <a href="seccomp-bpf.html">
+            
+                    
+                    Seccomp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="cgroups.html">
+            
+                <a href="cgroups.html">
+            
+                    
+                    Control Group
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="capabilities.html">
+            
+                <a href="capabilities.html">
+            
+                    
+                    Capabilities
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="lsm.html">
+            
+                <a href="lsm.html">
+            
+                    
+                    Linux Security Modules
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="apparmor.html">
+            
+                <a href="apparmor.html">
+            
+                    
+                    AppArmor
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="best-practices.html">
+            
+                <a href="best-practices.html">
+            
+                    
+                    Best Practices
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="references.html">
+            
+                <a href="references.html">
+            
+                    
+                    References & Resources
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Linux Containers</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="what-are-linux-contianers">What are Linux Contianers?</h3>
+<blockquote>
+<p>Before moving on, let&#x2019;s understand the difference between the containers and the virtual machine. </p>
+</blockquote>
+<p><img src="static/container_vs_vm.jpg" alt="Virtual Machines vs Containers"></p>
+<p><a href="http://patg.net/containers,virtualization,docker/2014/06/05/docker-intro/" target="_blank">http://patg.net/containers,virtualization,docker/2014/06/05/docker-intro/</a></p>
+<p>Linux containers, in short, contain applications in a way that keep them isolated from the host system that they run on. Containers allow a developer to package up an application with all of the parts it needs, such as libraries and other dependencies, and ship it all out as one package. And they are designed to make it easier to provide a consistent experience as developers and system administrators move code from development environments into production in a fast and replicable way.</p>
+<p>Note: This is achieved through a combination of kernel security features such as namespaces, mandatory access control and control groups.</p>
+<h3 id="virtual-machines-vs-containers">Virtual Machines vs Containers</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Virtual Machines</th>
+<th style="text-align:center">Containers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Includes the application, the necessary binaries and libraries, and an entire guest operating system</td>
+<td style="text-align:center">Include the application and all of its dependencies, but share the kernel with other containers, running as isolated processes in user space on the host operating system.</td>
+</tr>
+<tr>
+<td style="text-align:center">Tied to platform (virtualization software)</td>
+<td style="text-align:center">Works everywhere (Computer, Cloud, etc.)</td>
+</tr>
+<tr>
+<td style="text-align:center">Size in GB&#x2019;s</td>
+<td style="text-align:center">Size in MB&#x2019;s</td>
+</tr>
+<tr>
+<td style="text-align:center">Takes minutes to start</td>
+<td style="text-align:center">Takes seconds to start</td>
+</tr>
+<tr>
+<td style="text-align:center">Costly</td>
+<td style="text-align:center">Cheaper</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-is-docker">What is Docker?</h3>
+<p>Docker is an application that enables build, ship and run your code anywhere. Docker containers wraps your code, runtime, system tools and libraries and creates an image which can be distributed to the others and it guarantees that it will always run regardless of the environment. Docker is originally used LXC (LinuX container) technology, but later switched to runC (known as libcontainer). It uses resource isolation feature of the linux kernel to create a container such as name space, layered filesystem, network space and cgroups, etc.</p>
+<p>Learn more about docker here <a href="https://training.docker.com/category/self-paced-online" target="_blank">https://training.docker.com/category/self-paced-online</a></p>
+<h3 id="overview">Overview</h3>
+<p><img src="static/docker-overview.png" alt="Docker Overview"></p>
+<h3 id="scenario-demo">Scenario Demo</h3>
+<ul>
+<li>How long does it take to setup an wordpress site for you?</li>
+</ul>
+<pre><code>$ docker run --name mysql -e MYSQL_ROOT_PASSWORD=wordpress -d mysql
+
+$ docker run --name some-wordpress --link mysql:mysql -p 8080:80 -d wordpress
+</code></pre><h3 id="super-cool-demo-with-htop">Super cool demo with HTOP</h3>
+<ul>
+<li>Running <code>htop</code> command in container and assigning host processes (example of giving privileges to containers)</li>
+</ul>
+<pre><code>$ docker run --rm -it --pid host jess/htop
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="dirtycow.html" class="navigation navigation-prev " aria-label="Previous page: Dirty Cow Demo">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="namespaces.html" class="navigation navigation-next " aria-label="Next page: Namespaces">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Linux Containers","level":"1.5","depth":1,"next":{"title":"Namespaces","level":"1.6","depth":1,"path":"namespaces.md","ref":"namespaces.md","articles":[{"title":"What are the Linux namespaces?","level":"1.6.1","depth":2,"path":"linux-namespaces.md","ref":"linux-namespaces.md","articles":[]}]},"previous":{"title":"Dirty Cow Demo","level":"1.4","depth":1,"path":"dirtycow.md","ref":"dirtycow.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["ga"],"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-15752161-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"linux-containers.md","mtime":"2020-05-31T20:21:51.076Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-31T20:23:32.240Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

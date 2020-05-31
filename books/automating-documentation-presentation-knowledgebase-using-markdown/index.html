@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <title>Automating Documentation, Presentation, Knowledge base using Markdown (Zero to Hero) - null Bangalore</title>
+  <link rel="stylesheet" href="./css/reveal.css" />
+  <link rel="stylesheet" href="./css/theme/black.css" id="theme" />
+  <link rel="stylesheet" href="./css/highlight/zenburn.css" />
+  <link rel="stylesheet" href="./css/print/paper.css" type="text/css" media="print" />
+
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <section data-markdown>
+          <script type="text/template">### Welcome to Automating Documentation, Presentation, Knowledge base using Markdown
+
+(Zero to Hero)
+
+#### **null puliya** by ***Madhu Akula***
+
+11th Feb 2017
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### About Me !
+- Automation Ninja at [Appsecco](http://appsecco.com)
+- Fusion of Security, DevOps and Cloud
+- Speaker & Trainer at Defcon, All Day DevOps, DevSecCon, etc
+- Found bugs in Google, Microsoft, Yahoo, etc
+- Never ending learner
+- Follow (or) Tweet to me [@madhuakula](https://twitter.com/madhuakula)
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### What you are going learn?
+- Basics of Markdown and how to version control
+- Automating Documentation, Presentation, Knowledgebase using Markdown
+- Lot of exercises & tools
+- Tips & Tricks to use in automated work flow
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Pre-requisites
+- Anyone interested in automating their work flows using `Markdown`
+- If you want practice along, Laptop with admin privilege required
+- VirtualBox 5 (or) above
+- Minimum 2GB RAM & 10GB Disk space
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Import virtual machine appliance
+- Please import the virtual machine appliance from `null-puliya-adpk/automated-markdown.ova`
+
+*images need to insert here*
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Start the virtual machine & Login
+
+```
+Username: ubercool
+Password: forgot
+```
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Local documentation for reference
+![Zeal Docs](images/zeal-docs.png)
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Zeal Application
+- [Zeal](https://zealdocs.org/) is an off-line documentation browser. Very useful!
+- MAC Alternative is [Dash](https://kapeli.com/dash)
+- To open Zeal application, click on `Applications` and type `Zeal`
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### What is Markdown?
+> Markdown is a lightweight markup language with plain text formatting syntax designed so that it can be converted to HTML and many other formats. 
+> - https://en.wikipedia.org/wiki/Markdown
+
+[Read more about here](https://daringfireball.net/projects/markdown/)
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Powers of Markdown
+- Plain Text
+- Easy to read and write
+- We can version control everything
+- Generate awesome things (PDF, HTML, etc)
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Markdown Cheat Sheet
+- Get here [http://packetlife.net/media/library/16/Markdown.pdf](http://packetlife.net/media/library/16/Markdown.pdf)
+- Open offline copy at `Documents/markdown-cheat-sheet.pdf`
+- To know more about syntax [https://daringfireball.net/projects/markdown/syntax](https://daringfireball.net/projects/markdown/syntax)
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Open Markdown Editor (ReText) and Follow below
+![Markdown-Retext](images/markdown-retext.png)
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Exercise-1
+![Exercise-1](images/ex-1.png)
+
+- Hint: Image can found here `home/ubercool/Downloads/xss.png`
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Exercise-1 Solution
+````
+# Pentesting Report
+
+## Cross Site Scripting Vulnerability (XSS)
+
+### Vulnerable System
+
+The application *search field* is vulnerable to cross site scripting vulnerability aka **XSS**
+
+### Overview
+Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted web sites.
+
+### Proof of Concept
+- Login to the port and navigate to the [http://localhost/search.php](http://localhost/search.php)
+- Insert the below payload and click on search button
+
+```
+<script>alert(1)__SCRIPT_END__
+```
+
+- Then you can see the alert box.
+- Please find the below sample output screen shot for reference
+
+![xss](file:///home/ubercool/Downloads/xss.png)
+
+### Solution
+
+- [Reference for more details can found here](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet)
+````
+</script>
+        </section>
+      </section>
+      <section>
+        <section data-markdown>
+          <script type="text/template">### Version Control
+> Version control also known as revision control or source control, is a system that records changes to a file or set of files over time so that you can recall specific versions later.
+
+- One of the popular version controlling software is `Git`
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Why version control
+- Collaboration
+- Helps to understand what happened
+- Storing & Restoring Versions
+- Backup
+- Many more
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Git Basics
+> Git is a version control system (VCS) for tracking changes in computer files and coordinating work on those files among multiple people. It can be used to keep track of changes in any files.
+
+> I highly recommend playing this game to learn more about git [https://try.github.io](https://try.github.io)
+
+<aside class="notes"><p>Git allows groups of people to work on the same documents at the same time, and without stepping on each other&#39;s toes. It&#39;s a distributed version control system.</p>
+</aside></script>
+        </section>
+      </section>
+      <section>
+        <section data-markdown>
+          <script type="text/template">### Follow these basic commands
+
+- Create new directory 
+```
+$ mkdir puliya
+$ cd puliya
+```
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Git basics
+- To initialize a Git repository
+```
+$ git init
+```
+
+- Create a text file with sample content
+
+```
+$ echo "git is awesome" > test.txt
+```
+
+- Then check the status of the repository
+
+```
+$ git status
+```
+
+- Add the file to version control
+
+```
+$ git add test.txt
+```
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Git basics [contd.]
+- Check the status
+```
+$ git status
+```
+
+- Commit the changes to the repository
+```
+$ git commit -m "added initial test.txt file"
+```
+
+- Check the status once again
+```
+$ git status
+```
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Git basics [contd.]
+- Add different data into `test.txt` file
+```
+$ echo "this is different content" > test.txt
+$ git status
+$ git add test.txt
+$ git status
+$ git commit -m "updated test.txt file with random content"
+$ git status
+```
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Git basics [contd.]
+- Now let's browse them to see what we changed.
+```
+$ git log
+```
+
+- Add little more content
+```
+$ echo "this is different content from previous" > test.txt
+```
+
+- Look at the differences
+```
+$ git diff
+```
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Git basics [contd.] (Not required here)
+- To push to remote repository from local, add the remote repository
+```
+$ git remote add origin https://github.com/username/reponame.git
+```
+
+- Push the changes to remote repository
+```
+$ git push -u origin master
+```
+
+- To pull the changes
+```
+$ git pull origin master
+```
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Git basics [contd.] (Not required here)
+- To clone a git repository
+```
+$ git clone https://github.com/madhuakula/null-puliya-adpk-markdown.git
+```
+
+- Check this out for more reference [http://rogerdudler.github.io/git-guide/](http://rogerdudler.github.io/git-guide/)
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Introducing Sublime Text
+> Sublime Text is a sophisticated text editor for code, markup and prose.
+
+![Sublime](images/sublime.png)
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Sublime Basics
+- It has bunch of features & plug-ins to automate work flows
+- Open sublime application from the menu
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Sublime Exercise
+- Simple automated work flow with syntax from Sublime Text website
+
+```
+[Monday, Tuesday, Wednesday, Thursday, Friday]
+```
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Installed plug-ins & use case
+
+- [Package control](https://packagecontrol.io/) is to manage all packages in sublime text
+    + [Markdown Preview](https://github.com/revolunet/sublimetext-markdown-preview)
+    + [Markdown Editing](https://github.com/SublimeText-Markdown/MarkdownEditing)
+    + [Git](https://github.com/SublimeGit/SublimeGit)
+    + [Git Gutter](https://github.com/jisaacks/GitGutter)
+    + [PlainTasks](https://github.com/aziz/PlainTasks)
+    + [SublimeCodeIntel](https://github.com/SublimeCodeIntel/SublimeCodeIntel)
+    + [SideBarEnhancements](https://github.com/SideBarEnhancements-org/SideBarEnhancements)
+    + [BracketHighlighter](https://github.com/facelessuser/BracketHighlighter)
+- Multiple themes as well
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Let's start with Plain Tasks
+- Open sublime text application and save file with `.todo` extension
+    + For example `puliya.todo`
+- Now we can create projects, tasks, priority, etc. 
+- This is simple and super powerful project management tool
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Sublime Text Plug-ins (Plain Tasks)
+- Click on `File -> Open File` and select `Documents/puliya.todo` file
+
+![Plain Tasks](images/plain-tasks.png)
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Sublime Text Plug-ins (Markdown Preview and Markdown Editing)
+- These plug-ins will allow us to write `Markdown` in sublime and also to generate HTML documents.
+- Click on `File -> New File` and save file with `.md` extension
+    + For example `puliya.md`
+- Now we can write Markdown text here
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Sublime Text Plug-ins (Markdown Preview and Markdown Editing)
+- Click on `File -> Open File` and select `Documents/puliya.md` file
+
+![Markdown Preview](images/markdown-preview.png)
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Sublime Text Plug-ins (Markdown Preview and Markdown Editing)
+- Automating the live HTML preview in real-time
+- Press `ctrl+b`
+
+![Markdown Preview Compile](images/markdown-preview-compile.png)
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Sublime Text Plug-ins (Markdown Preview and Markdown Editing)
+- Now open that path in your browser
+
+![Markdown Preview Compile](images/markdown-preview-browser.png)
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Sublime Text Plug-ins (Markdown Preview and Markdown Editing)
+- Automating the work flow of compilation and preview using sublime short-cuts
+- Open `Preference -> Package Settings -> Markdown Editing -> Key Bindings - User` and paste the below code
+
+```
+[
+    { "keys": ["alt+m"], "command": "markdown_preview", "args": {"target": "browser", "parser":"markdown"} },
+]
+```
+
+- Now just press `alt + m` on keyboard and it will automatically compile and preview in the favourite browser
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Sublime Text Plug-ins (Git & Git Gutter)
+- Get more productive with git using sublime text
+- Open the project folder where your git project is available
+- `ctrl + shift + p`, then type Git and you’ll see your available Git commands.
+- `ADD`, `COMMIT`, AND `PUSH` WITHIN SUBLIME TEXT
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Sublime Text Plug-ins (Git & Git Gutter) [Contd.]
+- My workflow when trying to push code to the server inside of Sublime Text looks like:
+
+> `ctrl + shift + p`, then type `Add current file` and `ctrl + shift + p`, type `quick commit`, then type `message` `ctrl + shift + p`, type `push`
+
+- [https://scotch.io/tutorials/using-git-inside-of-sublime-text-to-improve-workflow](https://scotch.io/tutorials/using-git-inside-of-sublime-text-to-improve-workflow)
+</script>
+        </section>
+      </section>
+      <section>
+        <section data-markdown>
+          <script type="text/template">### Introducing [Reveal JS](http://lab.hakim.se/reveal-js/)
+- A framework for easily creating beautiful presentations using HTML
+
+> `reveal.js` comes with a broad range of features including nested slides, Markdown contents, PDF export, speaker notes and a JavaScript API. There's also a fully featured visual editor and platform for sharing reveal.js presentations at slides.com.
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### How to automated Markdown to Presentation(reveal.js) using reveal-md
+**What is reveal.md?**
+> reveal.js on steroids! Get beautiful reveal.js presentations from your Markdown files
+
+- `reveal-md` is a nodejs tool to convert and preview `reveal.js` presentations using markdown
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### reveal-md demo
+- Open sublime and create new file and paste the below content and save with `.md` extension
+    + For examples `presentation.md`
+- Paste the below content
+
+```
+# Title
+
+* Point 1
+* Point 2
+
+---
+
+## Second slide
+
+> Best quote ever.
+
+<aside class="notes"><p>speaker notes FTW!
+```</p>
+</aside></script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### reveal-md demo [Contd.]
+- Now open your terminal and type the below command. Make sure the md file path is `presentation.md` (your markdown file) correct.
+
+```
+$ reveal-md ~/Documents/presentation.md
+```
+
+- Now it will automatically open this in your favourite browser.
+- Press `s` to see the speaker view
+
+<aside class="notes"><p>If time permits, we can do simple exercises</p>
+</aside></script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### reveal-md demo [Contd.]
+- To print the presentation, run the below command
+```
+$ reveal-md ~/Documents/presentation.md --print ~/Documents/presentation.pdf
+```
+
+- We can also use separators (vertical, horizontal) and different themes as well
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### reveal-md demo [Contd.]
+![reveal-md](images/reveal-md-help.png)
+
+- Check out [https://github.com/webpro/reveal-md](https://github.com/webpro/reveal-md) for more details
+</script>
+        </section>
+      </section>
+      <section>
+        <section data-markdown>
+          <script type="text/template">### Knowledgebase
+- A store of information or data that is available to draw on.
+
+> A knowledge base (KB) is a technology used to store complex structured and unstructured information used by a computer system.
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Why Knowledgebase
+
+> Writing documentation is very important and keeping it updated and available everyone in the organisation is difficult with traditional methods. Knowledgebase allows to have a centralised place to look for all the documentation, how-to guides, playbooks, many more. It will also help us to write (or) generate more content for articles, blog posts, reference material, etc.
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Introducing [Raneto](http://raneto.com/)
+
+> Raneto is a Knowledgebase platform for Node.js that uses static Markdown files to power the knowledgebase.
+![Raneto KB](images/raneto-kb.png)
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Raneto [Contd.]
+Raneto can be called a "static site generator" of sorts as it doesn't require a database. All of your content is stored in the content folder in Markdown (.md) files and the entire knowledgebase structure and content is generated by Raneto. This is good because it's:
+
+- Simple: You can create and manage an entire knowledge base using your favourite text editor
+- Flat: Raneto is a "flat file" CMS, meaning no database woe's, no MySQL queries, nothing
+- Fast: Raneto is seriously lightweight and doesn't use a database, making it super fast
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Let's start Raneto server
+- Navigate to the `Raneto` directory
+```
+$ cd /home/ubercool/Raneto
+```
+
+- Start the `Raneto` server by running the below command
+```
+$ npm start
+```
+
+- Then navigate to [http://localhot:3000](http://localhot:3000) in your favourite browser
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### How to add content to the knowledgebase?
+- We have to write our `Markdown` files and keep them under content folder
+- For example, run the below command open sublime with `null-puliya.md` under content folder in another terminal window
+```
+$ subl /home/ubercool/Raneto/example/content/null-puliya.md
+```
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Raneto Knowledgebase [Contd.]
+- Then paste the below `Markdown` text and save the file
+
+````
+# Pentesting Report
+
+## Cross Site Scripting Vulnerability (XSS)
+
+### Vulnerable System
+
+The application *search field* is vulnerable to cross site scripting vulnerability aka **XSS**
+
+### Overview
+Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted web sites.
+
+### Proof of Concept
+- Login to the port and navigate to the [http://localhost/search.php](http://localhost/search.php)
+- Insert the below payload and click on search button
+
+```
+<script>alert(1)__SCRIPT_END__
+```
+
+- Then you can see the alert box.
+- Please find the below sample output screen shot for reference
+
+![xss](file:///home/ubercool/Downloads/xss.png)
+
+### Solution
+
+- [Reference for more details can found here](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet)
+````
+
+- Refresh the page and see the updated knowledgebase
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Alternative Solution to Raneto - Introducing [MkDocs](http://www.mkdocs.org/)
+> `MkDocs` is a fast, simple and downright gorgeous static site generator that's geared towards building project documentation. Documentation source files are written in Markdown, and configured with a single YAML configuration file.
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### MkDocs [Contd.]
+![MkDocs](images/mkdocs-home.png)
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Let's start MkDocs
+- Run the below command to create new `MkDocs` project
+```
+$ mkdocs new /home/ubercool/Documents/null-puliya-project
+$ cd ~/Documents/null-puliya-project
+```
+
+- To server the documents run the below command
+```
+$ mkdocs serve
+```
+
+- Navigate to [http://localhost:8000](http://localhost:8000) to see MkDocs web UI
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Adding documents to MkDocs
+- Now we have to write our `Markdown` files and keep them under `docs` folder
+- For example, run the below command open sublime with `null-puliya.md` under docs folder in another terminal window
+```
+$ subl /home/ubercool/Documents/null-puliya-project/docs/null-puliya.md
+```
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### MkDocs [Contd.]
+- Then paste the below `Markdown` text and save the file
+
+````
+# Pentesting Report
+
+## Cross Site Scripting Vulnerability (XSS)
+
+### Vulnerable System
+
+The application *search field* is vulnerable to cross site scripting vulnerability aka **XSS**
+
+### Overview
+Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted web sites.
+
+### Proof of Concept
+- Login to the port and navigate to the [http://localhost/search.php](http://localhost/search.php)
+- Insert the below payload and click on search button
+
+```
+<script>alert(1)__SCRIPT_END__
+```
+
+- Then you can see the alert box.
+- Please find the below sample output screen shot for reference
+
+![xss](file:///home/ubercool/Downloads/xss.png)
+
+### Solution
+
+- [Reference for more details can found here](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet)
+````
+
+- Now refresh the page and see the updated docs
+</script>
+        </section>
+      </section>
+      <section>
+        <section data-markdown>
+          <script type="text/template">### Let's go beyond - Introducing [GitBook](https://www.gitbook.com/)
+- GitBook helps your team write, collaborate and publish content.
+- Modern documentation format and toolchain using Git and Markdown
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Why GitBook
+- Write using Markdown or AsciiDoc
+- Output as a website or ebook (pdf, epub, mobi)
+- Multi-Languages
+- Lexicon / Glossary
+- Cover
+- Variables and Templating
+- Content References
+- Plugins
+- Beautiful default theme
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Let's create basic GitBook
+- To initiate gitbook, run the below command
+```
+$ gitbook init /home/ubercool/nullbook
+$ cd /home/ubercool/nullbook
+```
+
+- Now serve the gitbook by running below command
+```
+$ gitbook serve
+```
+
+- Now navigate to [http://localhost:4000])(http://localhost:4000)
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### How to add content to GitBook
+- Now we have to write our `Markdown` file.
+- For example, run the below command open sublime with `null-puliya.md` under docs folder in another terminal window
+```
+$ subl /home/ubercool/nullbook/null-puliya.md
+```
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### GitBook [Contd.]
+- Then paste the below `Markdown` text and save the file
+
+````
+# Pentesting Report
+
+## Cross Site Scripting Vulnerability (XSS)
+
+### Vulnerable System
+
+The application *search field* is vulnerable to cross site scripting vulnerability aka **XSS**
+
+### Overview
+Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted web sites.
+
+### Proof of Concept
+- Login to the port and navigate to the [http://localhost/search.php](http://localhost/search.php)
+- Insert the below payload and click on search button
+
+```
+<script>alert(1)__SCRIPT_END__
+```
+
+- Then you can see the alert box.
+- Please find the below sample output screen shot for reference
+
+![xss](file:///home/ubercool/Downloads/xss.png)
+
+### Solution
+
+- [Reference for more details can found here](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet)
+````
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### GitBook [Contd.]
+- Then we have to add that to index file called `SUMMARY.md`. Open the `SUMMARY.md` file using below command
+
+```
+$ subl /home/ubercool/nullbook/SUMMARY.md
+```
+
+- Then add the below content at the end of the file
+
+```
+* [Presentation](null-puliya.md)
+```
+
+- Now go back the browser and see the updated GitBook page
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### How about using Editor - GitBook Editor
+- GitBook Editor is available for all platforms
+- It's GUI for writing GitBooks
+- Open GitBook Editor application from the menu
+- It has integration with Git as well
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### GitBook Editor
+![GitBook Editor](images/gitbook-editor.png)
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Generating PDF, epub, Mobi using GitBook
+
+```
+# Generate a PDF file
+$ gitbook pdf ./ ./mybook.pdf
+
+# Generate an ePub file
+$ gitbook epub ./ ./mybook.epub
+
+# Generate a Mobi file
+$ gitbook mobi ./ ./mybook.mobi
+```
+
+<aside class="notes"><p>Installing ebook-convert is required to generate ebooks (epub, mobi, pdf).
+<a href="https://toolchain.gitbook.com/ebook.html">https://toolchain.gitbook.com/ebook.html</a></p>
+</aside></script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Markdown Automation Use Cases - Introducing [Pandoc](http://pandoc.org/)
+> Pandoc is an universal document converter
+
+- If you need to convert files from one markup format into another, pandoc is your swiss-army knife.
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Pandoc Conversions
+![Pandoc](images/pandoc.jpg) <!-- .element height="20%" width="20%" -->
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Simple Automated work-flow from `Markdown` to `MS Word Document`
+- Convert Markdown file to MS Word Document using pandoc
+```
+$ pandoc -o <output word file> -f markdown -t docx <input markdown file>
+```
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">## Pandoc [Contd.]
+- Create a sample markdown file `subl test.md` and save the file
+
+```
+# This is heading one
+Random content for word document testing
+
+## Second Heading
+Pandoc is awesome
+
+### This is final one
+- Cool stuff
+- Ubercool stuff
+```
+
+- Run the below command to convert markdown file to docx (word document)
+```
+$ pandoc -o test.docx -f markdown -t docx test.md
+```
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Advanced Implementation (Complete Automation)
+- Create markdown files in sublime text
+- Version control markdown files using `git` inside sublime text
+- Commit changes and push to Github (or) Bitbucket (or) Gitlab
+- Create webhook (or) CI tool integration
+    + To copy these content to raneto directory and automate the KB
+    + Convert into documents, presentations using `pandoc`
+    + Create MkDocs (or) GitBooks 
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### How I created this course
+- Used Sublime Text with Markdown, Git, other
+- Used PlainTasks for Project Management
+- Version Controlled everything
+- Created HTML Docs, PDF Docs, GitBooks, other
+- Created presentation using reveal-md
+- Almost applied everything what you have learned :)
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Bonus Gifts
+- While creating course I have compiled below
+    + Version controlled everything 
+    + Documentation for setup & presentation
+    + PDF, E-Book, other formats for Setup
+    + Many other
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">### Thanks to [Akash Mahajan](https://twitter.com/makash) and [Anant Shrivastava](https://twitter.com/anantshri). Initially, I learnt so many things from them :)
+</script>
+        </section>
+      </section>
+      <section data-markdown>
+        <script
+          type="text/template">## Thanks
+
+Follow me for more tips & ticks!
+
+***[@madhuakula](https://twitter.com/madhuakula)***
+
+[https://github.com/madhuakula/null-puliya-adpk-markdown](https://github.com/madhuakula/null-puliya-adpk-markdown)</script>
+      </section>
+    </div>
+  </div>
+
+  <script src="./js/reveal.js"></script>
+
+  <script>
+    function extend() {
+      var target = {};
+      for (var i = 0; i < arguments.length; i++) {
+        var source = arguments[i];
+        for (var key in source) {
+          if (source.hasOwnProperty(key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+      return target;
+    }
+
+    // Optional libraries used to extend on reveal.js
+    var deps = [
+      { src: './plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+      { src: './plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+      { src: './plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+      { src: './plugin/zoom-js/zoom.js', async: true },
+      { src: './plugin/notes/notes.js', async: true },
+      { src: './plugin/math/math.js', async: true }
+    ];
+
+    // default options to init reveal.js
+    var defaultOptions = {
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+      transition: 'default', // none/fade/slide/convex/concave/zoom
+      dependencies: deps
+    };
+
+    // options from URL query string
+    var queryOptions = Reveal.getQueryHash() || {};
+
+    var options = extend(defaultOptions, {}, queryOptions);
+  </script>
+
+
+  <script>
+    Reveal.initialize(options);
+  </script>
+  <script type="application/javascript">
+    var doNotTrack = false;
+    if (!doNotTrack) {
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+      ga('create', 'UA-15752161-2', 'auto');
+
+      ga('send', 'pageview');
+    }
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+</body>
+
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Shopify metadata to cluster pwn - Attacking and Auditing Docker Containers and Kubernetes Clusters</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Appsecco training course content on Attacking and Auditing Dockers Containers and Kubernetes Clusters">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="expanded "><a href="../intro/index.html"><strong aria-hidden="true">2.</strong> Introduction</a></li><li><ol class="section"><li class="expanded "><a href="../intro/disclaimer.html"><strong aria-hidden="true">2.1.</strong> Disclaimer</a></li><li class="expanded "><a href="../intro/agenda.html"><strong aria-hidden="true">2.2.</strong> Agenda</a></li></ol></li><li class="expanded "><a href="../environment-setup/index.html"><strong aria-hidden="true">3.</strong> Environment Setup</a></li><li><ol class="section"><li class="expanded "><a href="../environment-setup/importing-virtualmachines.html"><strong aria-hidden="true">3.1.</strong> Importing Virtual Machines</a></li><li class="expanded "><a href="../environment-setup/ssh-into-machine.html"><strong aria-hidden="true">3.2.</strong> SSH into machines from your host</a></li><li class="expanded "><a href="../environment-setup/common-troublehshooting-steps.html"><strong aria-hidden="true">3.3.</strong> Common troubleshooting steps</a></li><li class="expanded "><a href="../getting-started/internet-check.html"><strong aria-hidden="true">3.4.</strong> Internet Check</a></li></ol></li><li class="expanded "><a href="../getting-started-with-docker/index.html"><strong aria-hidden="true">4.</strong> Getting started with docker</a></li><li><ol class="section"><li class="expanded "><a href="../getting-started-with-docker/docker-run.html"><strong aria-hidden="true">4.1.</strong> docker run</a></li><li class="expanded "><a href="../getting-started-with-docker/dockerfile.html"><strong aria-hidden="true">4.2.</strong> Dockerfile</a></li><li class="expanded "><a href="../getting-started-with-docker/docker-management.html"><strong aria-hidden="true">4.3.</strong> docker management</a></li></ol></li><li class="expanded "><a href="../advanced-concepts/index.html"><strong aria-hidden="true">5.</strong> Docker Advanced Concepts</a></li><li><ol class="section"><li class="expanded "><a href="../advanced-concepts/docker-compoe-wordpress.html"><strong aria-hidden="true">5.1.</strong> docker-compose wordpress</a></li><li class="expanded "><a href="../advanced-concepts/docker-volumes-and-networks.html"><strong aria-hidden="true">5.2.</strong> docker volumes and networks</a></li><li class="expanded "><a href="../advanced-concepts/docker-swarm.html"><strong aria-hidden="true">5.3.</strong> docker swarm</a></li><li class="expanded "><a href="../advanced-concepts/portainer.html"><strong aria-hidden="true">5.4.</strong> Portainer</a></li></ol></li><li class="expanded "><a href="../attacking-insecure-volume-mounts/index.html"><strong aria-hidden="true">6.</strong> Attacking Insecure Volume Mounts</a></li><li><ol class="section"><li class="expanded "><a href="../attacking-insecure-volume-mounts/scenario.html"><strong aria-hidden="true">6.1.</strong> Scenario</a></li><li class="expanded "><a href="../attacking-insecure-volume-mounts/solution.html"><strong aria-hidden="true">6.2.</strong> Solution</a></li></ol></li><li class="expanded "><a href="../attacking-docker-containers/index.html"><strong aria-hidden="true">7.</strong> Learning More</a></li><li><ol class="section"><li class="expanded "><a href="../attacking-docker-containers/namespaces.html"><strong aria-hidden="true">7.1.</strong> Namespaces</a></li><li class="expanded "><a href="../attacking-docker-containers/capabilities.html"><strong aria-hidden="true">7.2.</strong> Capabilities</a></li><li class="expanded "><a href="../extra/control-groups.html"><strong aria-hidden="true">7.3.</strong> Control Groups</a></li></ol></li><li class="expanded "><a href="../attacking-docker-misconfiguration/index.html"><strong aria-hidden="true">8.</strong> Attacking docker misconfiguration</a></li><li><ol class="section"><li class="expanded "><a href="../attacking-docker-misconfiguration/scenario.html"><strong aria-hidden="true">8.1.</strong> Scenario</a></li><li class="expanded "><a href="../attacking-docker-misconfiguration/solution.html"><strong aria-hidden="true">8.2.</strong> Solution</a></li></ol></li><li class="expanded "><a href="../docker-image-audit/index.html"><strong aria-hidden="true">9.</strong> Auditing Docker containers and images</a></li><li><ol class="section"><li class="expanded "><a href="../auditing-docker-containers/docker-images-containers.html"><strong aria-hidden="true">9.1.</strong> Docker images and containers</a></li><li class="expanded "><a href="../docker-image-audit/scenario.html"><strong aria-hidden="true">9.2.</strong> Scenario</a></li><li class="expanded "><a href="../docker-image-audit/solution.html"><strong aria-hidden="true">9.3.</strong> Solution</a></li></ol></li><li class="expanded "><a href="../docker-volumes-and-networks/index.html"><strong aria-hidden="true">10.</strong> Auditing Docker networks and volumes</a></li><li><ol class="section"><li class="expanded "><a href="../auditing-docker-containers/docker-volumes-networks.html"><strong aria-hidden="true">10.1.</strong> Docker volumes and networks</a></li><li class="expanded "><a href="../docker-volumes-and-networks/scenario.html"><strong aria-hidden="true">10.2.</strong> Scenario</a></li><li class="expanded "><a href="../docker-volumes-and-networks/solution.html"><strong aria-hidden="true">10.3.</strong> Solution</a></li></ol></li><li class="expanded "><a href="../auditing-docker-containers/docker-integrity-check.html"><strong aria-hidden="true">11.</strong> Docker integrity checks</a></li><li class="expanded "><a href="../auditing-docker-containers/amicontained.html"><strong aria-hidden="true">12.</strong> amicontained</a></li><li class="expanded "><a href="../attacking-auditing-docker-registry/index.html"><strong aria-hidden="true">13.</strong> Attacking &amp; Auditing Docker Runtime &amp; Registries</a></li><li><ol class="section"><li class="expanded "><a href="../auditing-docker-containers/docker-runtime-endpoints.html"><strong aria-hidden="true">13.1.</strong> Docker runtime endpoints</a></li><li class="expanded "><a href="../attacking-auditing-docker-registry/docker-registries.html"><strong aria-hidden="true">13.2.</strong> Docker registries</a></li></ol></li><li class="expanded "><a href="../attacking-containers-capabilities/index.html"><strong aria-hidden="true">14.</strong> Attacking container capabilities</a></li><li><ol class="section"><li class="expanded "><a href="../attacking-containers-capabilities/scenario.html"><strong aria-hidden="true">14.1.</strong> Scenario</a></li><li class="expanded "><a href="../attacking-containers-capabilities/solution.html"><strong aria-hidden="true">14.2.</strong> Solution</a></li></ol></li><li class="expanded "><a href="../apparmor-nginx-profile/index.html"><strong aria-hidden="true">15.</strong> Linux Security Module: Apparmor</a></li><li class="expanded "><a href="../exploiting-cluster-secrets/index.html"><strong aria-hidden="true">16.</strong> Attacking swarm cluster secrets</a></li><li><ol class="section"><li class="expanded "><a href="../exploiting-cluster-secrets/scenario.html"><strong aria-hidden="true">16.1.</strong> Scenario</a></li><li class="expanded "><a href="../exploiting-cluster-secrets/solution.html"><strong aria-hidden="true">16.2.</strong> Solution</a></li></ol></li><li class="expanded "><a href="../attacking-private-registry/index.html"><strong aria-hidden="true">17.</strong> Attacking private registry images</a></li><li><ol class="section"><li class="expanded "><a href="../attacking-private-registry/scenario.html"><strong aria-hidden="true">17.1.</strong> Scenario</a></li><li class="expanded "><a href="../attacking-private-registry/solution.html"><strong aria-hidden="true">17.2.</strong> Solution</a></li></ol></li><li class="expanded "><a href="../auditing-docker-containers/docker-bench-security-audit.html"><strong aria-hidden="true">18.</strong> Docker Bench security audit</a></li><li class="expanded "><a href="../csm/index.html"><strong aria-hidden="true">19.</strong> Container Security Monitoring</a></li><li><ol class="section"><li class="expanded "><a href="../docker-logging/index.html"><strong aria-hidden="true">19.1.</strong> Docker logging</a></li><li class="expanded "><a href="../docker-events/index.html"><strong aria-hidden="true">19.2.</strong> Docker Events</a></li><li class="expanded "><a href="../sysdig-faclo/index.html"><strong aria-hidden="true">19.3.</strong> Sysdig Faclo</a></li></ol></li><li class="expanded "><a href="../getting-started/index.html"><strong aria-hidden="true">20.</strong> Kubernetes Environment Setup</a></li><li><ol class="section"><li class="expanded "><a href="../getting-started/kubernetes-cluster-setup.html"><strong aria-hidden="true">20.1.</strong> Cluster Setup</a></li><li class="expanded "><a href="../getting-started/import-vm.html"><strong aria-hidden="true">20.2.</strong> Import VM</a></li><li class="expanded "><a href="../getting-started/configure-kubectl.html"><strong aria-hidden="true">20.3.</strong> Configure kubectl</a></li><li class="expanded "><a href="../getting-started/vuln-apps.html"><strong aria-hidden="true">20.4.</strong> Vulnerable Apps</a></li></ol></li><li class="expanded "><a href="../kubernetes-101/index.html"><strong aria-hidden="true">21.</strong> Getting Started with Kubernetes</a></li><li><ol class="section"><li class="expanded "><a href="../kubernetes-101/children-guide.html"><strong aria-hidden="true">21.1.</strong> The Illustrated Children's Guide to Kubernetes</a></li><li class="expanded "><a href="../kubernetes-101/introduction.html"><strong aria-hidden="true">21.2.</strong> Introduction to Kubernetes</a></li><li class="expanded "><a href="../kubernetes-101/overview.html"><strong aria-hidden="true">21.3.</strong> Kubernetes Overview</a></li><li class="expanded "><a href="../kubernetes-101/technical-terms.html"><strong aria-hidden="true">21.4.</strong> Understanding Kubernetes specific technical terms</a></li><li class="expanded "><a href="../kubernetes-101/kubectl.html"><strong aria-hidden="true">21.5.</strong> kubectl usage for pentesters</a></li></ol></li><li class="expanded "><a href="../deploy-app/index.html"><strong aria-hidden="true">22.</strong> Deploying simple application in Kubernetes Cluster</a></li><li><ol class="section"><li class="expanded "><a href="../deploy-app/using-yaml.html"><strong aria-hidden="true">22.1.</strong> Using yaml manifest</a></li><li class="expanded "><a href="../deploy-app/using-helm.html"><strong aria-hidden="true">22.2.</strong> Using helm chart</a></li></ol></li><li class="expanded "><a href="../scenario-1/index.html"><strong aria-hidden="true">23.</strong> Scenario-1 - Exploiting Private Registry via Misconfiguration</a></li><li><ol class="section"><li class="expanded "><a href="../scenario-1/scenario.html"><strong aria-hidden="true">23.1.</strong> Scenario</a></li><li class="expanded "><a href="../scenario-1/solution.html"><strong aria-hidden="true">23.2.</strong> Solution</a></li><li class="expanded "><a href="../scenario-1/discussion.html"><strong aria-hidden="true">23.3.</strong> Discussion</a></li></ol></li><li class="expanded "><a href="../scenario-2/index.html"><strong aria-hidden="true">24.</strong> Scenario-2 - Attacking Kubernetes Cluster Metadata using SSRF vulnerability</a></li><li><ol class="section"><li class="expanded "><a href="../scenario-2/scenario.html"><strong aria-hidden="true">24.1.</strong> Scenario</a></li><li class="expanded "><a href="../scenario-2/solution.html"><strong aria-hidden="true">24.2.</strong> Solution</a></li><li class="expanded "><a href="../scenario-2/discussion.html"><strong aria-hidden="true">24.3.</strong> Discussion</a></li></ol></li><li class="expanded "><a href="../scenario-3/index.html"><strong aria-hidden="true">25.</strong> Scenario-3 - Testing for the sensitive configurations and secrets in Kubernetes cluster</a></li><li><ol class="section"><li class="expanded "><a href="../scenario-3/scenario.html"><strong aria-hidden="true">25.1.</strong> Scenario</a></li><li class="expanded "><a href="../scenario-3/solution.html"><strong aria-hidden="true">25.2.</strong> Solution</a></li><li class="expanded "><a href="../scenario-3/discussion.html"><strong aria-hidden="true">25.3.</strong> Discussion</a></li></ol></li><li class="expanded "><a href="../scenario-4/index.html"><strong aria-hidden="true">26.</strong> Scenario-4 - Docker escape using Pod Volume Mounts to access the nodes and host systems</a></li><li><ol class="section"><li class="expanded "><a href="../scenario-4/scenario.html"><strong aria-hidden="true">26.1.</strong> Scenario</a></li><li class="expanded "><a href="../scenario-4/solution.html"><strong aria-hidden="true">26.2.</strong> Solution</a></li><li class="expanded "><a href="../scenario-4/discussion.html"><strong aria-hidden="true">26.3.</strong> Discussion</a></li></ol></li><li class="expanded "><a href="../scenario-5/index.html"><strong aria-hidden="true">27.</strong> Scenario-5 - Attacking applications in different namespaces in Kubernetes cluster</a></li><li><ol class="section"><li class="expanded "><a href="../scenario-5/scenario.html"><strong aria-hidden="true">27.1.</strong> Scenario</a></li><li class="expanded "><a href="../scenario-5/solution.html"><strong aria-hidden="true">27.2.</strong> Solution</a></li><li class="expanded "><a href="../scenario-5/discussion.html"><strong aria-hidden="true">27.3.</strong> Discussion</a></li></ol></li><li class="expanded "><a href="../scenario-6/index.html"><strong aria-hidden="true">28.</strong> Scenario-6 - Attacking Helm tiller without RBAC setup</a></li><li><ol class="section"><li class="expanded "><a href="../scenario-6/scenario.html"><strong aria-hidden="true">28.1.</strong> Scenario</a></li><li class="expanded "><a href="../scenario-6/solution.html"><strong aria-hidden="true">28.2.</strong> Solution</a></li><li class="expanded "><a href="../scenario-6/discussion.html"><strong aria-hidden="true">28.3.</strong> Discussion</a></li></ol></li><li class="expanded "><a href="../kube-bench/index.html"><strong aria-hidden="true">29.</strong> Running kube-bench</a></li><li class="expanded "><a href="../kubesec/index.html"><strong aria-hidden="true">30.</strong> Running kubesec</a></li><li class="expanded "><a href="../kube-hunter/index.html"><strong aria-hidden="true">31.</strong> Running kube-hunter</a></li><li class="expanded "><a href="../kubeaudit/index.html"><strong aria-hidden="true">32.</strong> Running kubeaudit</a></li><li class="expanded "><a href="../logging-and-monitoring/index.html"><strong aria-hidden="true">33.</strong> Logging and Monitoring</a></li><li class="expanded "><a href="../automated-defense/index.html"><strong aria-hidden="true">34.</strong> Automated Security Defense using Sysdig Falco</a></li><li class="expanded "><a href="../demos/index.html"><strong aria-hidden="true">35.</strong> DEMO's</a></li><li><ol class="section"><li class="expanded "><a href="../demos/cve-2018-1002105.html"><strong aria-hidden="true">35.1.</strong> CVE-2018-1002105</a></li><li class="expanded "><a href="../demos/cve-2019-5736.html"><strong aria-hidden="true">35.2.</strong> CVE-2019-5736</a></li><li class="expanded "><a href="../demos/cve-2019-9901.html"><strong aria-hidden="true">35.3.</strong> CVE-2019-9901</a></li></ol></li><li class="expanded "><a href="../extra/index.html"><strong aria-hidden="true">36.</strong> Fun Learning About Kubernetes</a></li><li><ol class="section"><li class="expanded "><a href="../extra/contianed-af.html"><strong aria-hidden="true">36.1.</strong> Contained.af</a></li><li class="expanded "><a href="../extra/play-with-docker.html"><strong aria-hidden="true">36.2.</strong> Play with Docker</a></li><li class="expanded "><a href="../extra/katacoda.html"><strong aria-hidden="true">36.3.</strong> Katacoda Docker Security</a></li><li class="expanded "><a href="../extra/play-with-kubernetes.html"><strong aria-hidden="true">36.4.</strong> Play with Kubernetes</a></li></ol></li><li class="expanded "><a href="../popular-attacks/index.html"><strong aria-hidden="true">37.</strong> Popular Attacks</a></li><li><ol class="section"><li class="expanded "><a href="../popular-attacks/dockerhub-190k.html"><strong aria-hidden="true">37.1.</strong> Dockerhub 190k accounts</a></li><li class="expanded "><a href="../popular-attacks/cryptojacking.html"><strong aria-hidden="true">37.2.</strong> Cryptojacking using public docker containers</a></li><li class="expanded "><a href="../popular-attacks/dockerhub.html"><strong aria-hidden="true">37.3.</strong> Dockerhub known vulnerable images</a></li><li class="expanded "><a href="../popular-attacks/service-token.html"><strong aria-hidden="true">37.4.</strong> BSidesSF CTF cluster pwn</a></li><li class="expanded "><a href="../popular-attacks/metadata.html" class="active"><strong aria-hidden="true">37.5.</strong> Shopify metadata to cluster pwn</a></li></ol></li><li class="expanded "><a href="../references-and-resources.html"><strong aria-hidden="true">38.</strong> References &amp; Resources</a></li><li class="expanded "><a href="../terminology-glossary.html"><strong aria-hidden="true">39.</strong> Terminology Glossary</a></li><li class="spacer"></li><li class="expanded affix "><a href="../about-us/about-appsecco.html">About Appsecco</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Attacking and Auditing Docker Containers and Kubernetes Clusters</h1>
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#shopify-metadata-to-cluster-pwn" id="shopify-metadata-to-cluster-pwn">Shopify metadata to cluster pwn</a></h1>
+<p>The application vulnerability Server-Side Request Forgery (SSRF) in one of the container running in Kubernetes cluster allows attacker to access and gain control over the entire shopify cluster and instances.</p>
+<ul>
+<li>Read more about <a href="https://hackerone.com/reports/341876">SSRF to ROOT access in all instances</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../popular-attacks/service-token.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../references-and-resources.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../popular-attacks/service-token.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../references-and-resources.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+        <!-- Google Analytics Tag -->
+        <script type="text/javascript">
+            var localAddrs = ["localhost", "127.0.0.1", ""];
+
+            // make sure we don't activate google analytics if the developer is
+            // inspecting the book locally...
+            if (localAddrs.indexOf(document.location.hostname) === -1) {
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-15752161-2', 'auto');
+                ga('send', 'pageview');
+            }
+        </script>
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
