@@ -1,0 +1,5 @@
+baseURL = "https://content.madhuakula.com"
+languageCode = "en-us"
+title = "Madhu Akula's Presentations, Talks, Workshops, Trainings, Slides, Videos, Books content..."
+Paginate = 100
+googleAnalytics = "UA-15752161-2"
