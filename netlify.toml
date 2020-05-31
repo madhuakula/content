@@ -1,5 +1,5 @@
 [build]
-  command = "mkdir -p website/public && mv books/* website/public/ && cd website && hugo --gc --minify"
+  command = "mv books/* website/static/ && cd website && hugo --gc --minify"
   publish = "website/public"
 
 [build.environment]
