@@ -1,0 +1,471 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>General Best Practices Checklist · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="exercise.html" />
+    
+    
+    <link rel="prev" href="security-testing.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="setup.html">
+            
+                <a href="setup.html">
+            
+                    
+                    Setup
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="backup-elasticsearch.html">
+            
+                <a href="backup-elasticsearch.html">
+            
+                    
+                    Backup Elasticsearch
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="alerting-and-dashboards.html">
+            
+                <a href="alerting-and-dashboards.html">
+            
+                    
+                    Alerting & Dashboards
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="ansible-playbook.html">
+            
+                <a href="ansible-playbook.html">
+            
+                    
+                    Ansible Playbook
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="security-testing.html">
+            
+                <a href="security-testing.html">
+            
+                    
+                    Security Testing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7" data-path="general-best-practices-checklist.html">
+            
+                <a href="general-best-practices-checklist.html">
+            
+                    
+                    General Best Practices Checklist
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="exercise.html">
+            
+                <a href="exercise.html">
+            
+                    
+                    Exercise
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="alternative-options.html">
+            
+                <a href="alternative-options.html">
+            
+                    
+                    EXTRA: Alternatives
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="elasticsearch-config-checklist.html">
+            
+                <a href="elasticsearch-config-checklist.html">
+            
+                    
+                    EXTRA: Elasticsearch Configuration Checklist
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="references.html">
+            
+                <a href="references.html">
+            
+                    
+                    References
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="license.html">
+            
+                <a href="license.html">
+            
+                    
+                    License
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="q-and-a.html">
+            
+                <a href="q-and-a.html">
+            
+                    
+                    Q&A
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >General Best Practices Checklist</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="general-best-practice">General Best Practice</h1>
+<h3 id="elasticsearch-best-practice">Elasticsearch Best Practice</h3>
+<ul>
+<li>set <code>$ES_HEAP_SIZE</code> env var to 1/2 of RAM (but &lt; 32GB)</li>
+<li>Disable memory swapping by enabling <code>bootstrap.mlockall</code></li>
+<li>Set user&apos;s file <code>ulimit</code> to <code>unlimited</code> (Need reboot to check)<ul>
+<li>You can check with an API call as well <code>/_nodes/process</code></li>
+</ul>
+</li>
+<li>Use the default configuration and make small changes as required</li>
+<li>Multicast is great, but when you are going to production make sure to use <code>Unicast</code> discovery mode</li>
+<li>To eliminate the &quot;Split-brain&quot; problem use 3 lower resource master-eligible nodes in larger cluster environments (dedicated)</li>
+<li>You don&apos;t need beefy machines, simple machines are ok due to the distributed nature of elasticsearch</li>
+<li>Add lightweight client nodes (no data)</li>
+<li>Use Snapshot and Restore. This is very useful (but different from <code>replication</code>)</li>
+</ul>
+<h3 id="logstash-best-practice">Logstash Best Practice</h3>
+<ul>
+<li>Watch out for Grok Filter data (GREEDYDATA) as they use a lot of resources especially CPU and Memory. Try to get as specific as possible</li>
+<li>Test your configuration with <code>-e</code> <code>input{...}... output{...}</code></li>
+<li>Use <code>-b</code> flag to send bulk requests to elasticsearch</li>
+<li>Use <code>-w</code> flag to utilise multiple cores. This is especially useful for multi core and bulk processing</li>
+<li>Use the generator input for benchmarking (<a href="https://github.com/matejzero/logstash-benchmark" target="_blank">https://github.com/matejzero/logstash-benchmark</a>) and to understand performance and optimisation metrics</li>
+<li>If something goes wrong try <code>-- debug</code> for more detailed output (don&apos;t forgot to turn this off when you are done)</li>
+</ul>
+<h3 id="kibana-best-practice">Kibana Best Practice</h3>
+<ul>
+<li>Tune Queries in elasticsearch for maximum performance</li>
+<li>Configuring number of threads in pool</li>
+<li>Save and Export dashboards as a JSON File for reuse</li>
+<li>Deploy a proxy so that you can do basic authentication and other load balancing services</li>
+<li>While Kibana is an exploration tool, make sure you watch out for over-eager users affecting performance</li>
+</ul>
+<h3 id="production">Production</h3>
+<ul>
+<li>Access Control / Security<ul>
+<li>use nginx/apache to setup basic authentication</li>
+<li>You can block <code>POST</code> /  <code>PUT</code> / <code>DELETE</code> operations</li>
+<li>Disable Scripting (Version &lt; 1.2)
+<code>script.disable_dynamic: true</code></li>
+<li>Disable destructive actions
+<code>action.destructive_requires_name: true</code></li>
+<li>Use aliases to allow users access to subsets of indices</li>
+</ul>
+</li>
+<li>VM vs Metal<ul>
+<li>VM&apos;s are convenient (Auto scaling, no management, etc)</li>
+<li>Bare metal is generally more configurable and higher in performance</li>
+<li>Metal can utilize SSD&apos;s</li>
+<li>Cloud VM&apos;s can suffer from <code>noisy neighbors</code> </li>
+<li>But you should start using what you&apos;re most familiar with!</li>
+</ul>
+</li>
+<li>Disks<ul>
+<li>Spinning disk&apos;s are cheaper per GB</li>
+<li>SSDs have better IOPS</li>
+<li>SSDs are cheaper wrt: IOPS</li>
+<li>SSD manufacturing tolerance can vary (vendor based)</li>
+<li>SAN / NAS can work, if IOPS are sufficient (throughput, iops, etc)</li>
+<li>Don&apos;t necessarily need RAID, ES handles redundancy<ul>
+<li>But striping can help with performance</li>
+<li>You can use shards and replicas in ES</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="security">Security</h3>
+<ul>
+<li>Harden the base server with traditional security techniques</li>
+<li>Use SSH key for login </li>
+<li>Remove root login</li>
+<li>Use randomly generated passwords <code>openssl rand -base64 24</code></li>
+<li>Enable the host firewall and allow only connections from specific IPs</li>
+<li>Use SSL certificates and enable HTTPS for Elasticsearch, Logstash &amp; Kibana (E.g.: Lets encrypt)</li>
+<li>Use search guard for granular permissions and role based authentication for ELK (Shield is an alternative)</li>
+</ul>
+<h3 id="monitoring-services">Monitoring Services</h3>
+<ul>
+<li>Enable service level monitoring for Elasticsearch, Logstash and Kibana </li>
+<li>Use monit (or) uptime robot for monitoring services (you can also use Icinga}</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="security-testing.html" class="navigation navigation-prev " aria-label="Previous page: Security Testing">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="exercise.html" class="navigation navigation-next " aria-label="Next page: Exercise">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"General Best Practices Checklist","level":"1.7","depth":1,"next":{"title":"Exercise","level":"1.8","depth":1,"path":"exercise.md","ref":"exercise.md","articles":[]},"previous":{"title":"Security Testing","level":"1.6","depth":1,"path":"security-testing.md","ref":"security-testing.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["ga"],"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-15752161-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"general-best-practices-checklist.md","mtime":"2020-06-01T10:43:51.511Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-01T11:38:35.474Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

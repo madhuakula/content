@@ -1,0 +1,963 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Setup · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="backup-elasticsearch.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="setup.html">
+            
+                <a href="setup.html">
+            
+                    
+                    Setup
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="backup-elasticsearch.html">
+            
+                <a href="backup-elasticsearch.html">
+            
+                    
+                    Backup Elasticsearch
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="alerting-and-dashboards.html">
+            
+                <a href="alerting-and-dashboards.html">
+            
+                    
+                    Alerting & Dashboards
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="ansible-playbook.html">
+            
+                <a href="ansible-playbook.html">
+            
+                    
+                    Ansible Playbook
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="security-testing.html">
+            
+                <a href="security-testing.html">
+            
+                    
+                    Security Testing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="general-best-practices-checklist.html">
+            
+                <a href="general-best-practices-checklist.html">
+            
+                    
+                    General Best Practices Checklist
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="exercise.html">
+            
+                <a href="exercise.html">
+            
+                    
+                    Exercise
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="alternative-options.html">
+            
+                <a href="alternative-options.html">
+            
+                    
+                    EXTRA: Alternatives
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="elasticsearch-config-checklist.html">
+            
+                <a href="elasticsearch-config-checklist.html">
+            
+                    
+                    EXTRA: Elasticsearch Configuration Checklist
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="references.html">
+            
+                <a href="references.html">
+            
+                    
+                    References
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="license.html">
+            
+                <a href="license.html">
+            
+                    
+                    License
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="q-and-a.html">
+            
+                <a href="q-and-a.html">
+            
+                    
+                    Q&A
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Setup</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="setting-up-the-elk-stack">Setting up the ELK Stack</h2>
+<p><img src="images/ELK_basic_setup.png" alt="ELK Basic Setup"></p>
+<ul>
+<li>90 minutes</li>
+</ul>
+<h3 id="overall-architecture-diagram">Overall architecture diagram</h3>
+<p><img src="images/ourstructure.png" alt=""></p>
+<h3 id="the-virtual-machine">The Virtual Machine</h3>
+<p>Import the provided <code>infra-mon-elk.ova</code> file into Virtual Box</p>
+<p><img src="images/setup/vbox_import_ova.png" alt=""></p>
+<p>Change the location of the disk (if you want)
+<img src="images/setup/vbox_import_ova_change_disk_location.png" alt=""></p>
+<ul>
+<li>Boot the VM</li>
+</ul>
+<pre><code>user: ninja
+password: ninja
+</code></pre><ul>
+<li>Check your IP address</li>
+</ul>
+<pre><code>ifconfig
+</code></pre><ul>
+<li>Check connectivity to the VM <strong>from</strong> your local computer</li>
+</ul>
+<pre><code>ping &lt;IP_obtained_from_previous_step&gt;
+</code></pre><ul>
+<li>Add a host entry in your <strong>host machine</strong>. Use <code>sudo/administrator</code></li>
+</ul>
+<pre><code>192.168.56.101  elkhost.defcon
+</code></pre><pre><code>notepad %windir%\System32\drivers\etc\hosts
+</code></pre><pre><code>echo &quot;192.168.56.101  elkhost.defcon&quot; | sudo tee --append /etc/hosts
+</code></pre><h3 id="installing-java">Installing Java</h3>
+<ul>
+<li>Elasticsearch &amp; Logstash requires Java to run</li>
+<li>The virtual machine already has JAVA installed</li>
+</ul>
+<h3 id="installing-java">Installing Java</h3>
+<ul>
+<li>The commands below will add the repository and install Java (in case you want to try this out)</li>
+</ul>
+<pre><code>sudo add-apt-repository -y ppa:webupd8team/java
+sudo apt-get update -y
+sudo apt-get -y install oracle-java8-installer
+</code></pre><ul>
+<li>Check the JAVA installation version by running the command below</li>
+</ul>
+<pre><code>java -version
+</code></pre><h2 id="setting-up-elasticsearch">Setting up Elasticsearch</h2>
+<ul>
+<li>Let&apos;s get our hands dirty!</li>
+</ul>
+<blockquote>
+<p><strong>PS:</strong> We have provided installer files in the VM <code>/home/ninja/pkgs</code> directory
+<strong>PPS:</strong> We weren&apos;t sure of the Internet connectivity here when creating the VM</p>
+</blockquote>
+<h3 id="installing-elasticsearch-hands-on">Installing Elasticsearch (hands on)</h3>
+<ul>
+<li>Install Elasticsearch by running the command below:</li>
+</ul>
+<pre><code>sudo dpkg -i /home/ninja/pkgs/elasticsearch.deb
+</code></pre><p>Note: since the deb file has already been downloaded. The usual route would be to add the Elasticsearch gpg key, add the Elasticsearch repo to the sources and then the standard apt-update and apt-get install.</p>
+<ul>
+<li>Start Elasticsearch service by running:</li>
+</ul>
+<pre><code>sudo service elasticsearch start
+</code></pre><ul>
+<li>Check whether Elasticsearch is running or not:</li>
+</ul>
+<pre><code>curl -XGET &apos;http://localhost:9200&apos;
+</code></pre><h3 id="elasticsearch-configuration-hands-on">Elasticsearch configuration (hands on)</h3>
+<ul>
+<li>Some basic configurations to start with:</li>
+</ul>
+<pre><code>sudo vi /etc/elasticsearch/elasticsearch.yml
+</code></pre><ul>
+<li><p>Uncomment the following lines, make the changes as shown below and save the file</p>
+</li>
+<li><p>Cluster name should be unique</p>
+</li>
+</ul>
+<pre><code>cluster.name: elk-defcon
+</code></pre><ul>
+<li>Node name is to identify the node in a cluster</li>
+</ul>
+<pre><code>node.name: node-1
+</code></pre><ul>
+<li>To avoid memory swapping for Elasticsearch</li>
+</ul>
+<pre><code>bootstrap.mlockall: true
+</code></pre><ul>
+<li>Access</li>
+</ul>
+<pre><code>network.host: 0.0.0.0
+</code></pre><ul>
+<li>Note: Cluster name used to connect across nodes</li>
+<li>Node names are mostly hostnames</li>
+<li>To avoid swapping for elasticsearch</li>
+<li>Protect access</li>
+</ul>
+<ul>
+<li>Restart the Elasticsearch service</li>
+</ul>
+<pre><code>sudo service elasticsearch restart
+</code></pre><ul>
+<li>Check the Elasticsearch cluster status</li>
+</ul>
+<pre><code>curl -XGET &apos;http://localhost:9200/_cluster/health?pretty&apos;
+
+curl -XGET &apos;http://localhost:9200/_cluster/state?pretty&apos;
+</code></pre><ul>
+<li><font color="green"><code>green</code></font> - All primary and replica shards are active.</li>
+<li><font color="yellow"><code>yellow</code></font> - All primary shards are active, but not all replica shards are active.</li>
+<li><font color="red"><code>red</code></font> - Not all primary shards are active.</li>
+</ul>
+<h3 id="setting-up-another-node-hands-on">Setting up another node (hands on)</h3>
+<blockquote>
+<p>PS: Open another SSH session</p>
+</blockquote>
+<ul>
+<li>To add another node, we extract the files from the elasticsearch tar zip</li>
+</ul>
+<pre><code>tar -xvf /home/ninja/pkgs/elasticsearch-2.3.4.tar.gz -C /home/ninja/pkgs/
+
+cd /home/ninja/pkgs/elasticsearch-2.3.4
+</code></pre><ul>
+<li>And edit the config as we did for the previous node</li>
+</ul>
+<pre><code>vi config/elasticsearch.yml
+</code></pre><ul>
+<li>Add a node name, while keeping the cluster name constant across both the nodes</li>
+</ul>
+<pre><code>cluster.name: elk-defcon
+node.name: node-2
+bootstrap.mlockall: true
+network.host: 0.0.0.0
+</code></pre><ul>
+<li>Start the second node by running the following command</li>
+</ul>
+<pre><code>./bin/elasticsearch
+</code></pre><blockquote>
+<p>We use the same VM to install another node on the side</p>
+</blockquote>
+<ul>
+<li>Recheck the Elasticsearch cluster status now</li>
+</ul>
+<pre><code>curl -XGET &apos;http://localhost:9200/_cluster/health?pretty&apos;
+
+curl -XGET &apos;http://localhost:9200/_cluster/state?pretty&apos;
+</code></pre><h2 id="so-what-happens-in-a-multi-node-cluster">So What happens in a multi node cluster?</h2>
+<h3 id="clustering">Clustering</h3>
+<blockquote>
+<p>Elasticsearch is built to be always available, and to scale. Scale can come from buying bigger servers (vertical scale, or scaling up) or from buying more servers (horizontal scale, or scaling out).</p>
+</blockquote>
+<p>Note: We need to start by understanding the word &apos;Clustering&apos; in context with Elasticsearch</p>
+<h3 id="an-empty-cluster">An Empty Cluster</h3>
+<p>Our cluster with a single node, with no data and no indices:</p>
+<p><img src="images/es-c-1.png" alt="A cluster with one empty node"></p>
+<ul>
+<li>A node is a running instance of Elasticsearch</li>
+<li>A Cluster consists of one or more nodes with the same cluster.name</li>
+</ul>
+<blockquote>
+<p>Note:By default Elasticsearch will have 5 primary shards and 1 replica shard with cluster name <code>elasticsearch</code> and node name as a random Marvel character.</p>
+</blockquote>
+<h3 id="adding-index">Adding index</h3>
+<ul>
+<li>In an empty one-node cluster, we will assign three primary shards and one replica</li>
+<li>There is one replica for all the primary shards</li>
+</ul>
+<p><img src="images/es-c-2.png" alt="A single-node cluster with an index"></p>
+<blockquote>
+<p>Note: Because there is no separate node, the replica shard becomes unassigned. Which is why it is not denoted in this image.</p>
+</blockquote>
+<h3 id="add-failover">Add Failover</h3>
+<ul>
+<li>Running a single node means that you have a single point of failure - there is no redundancy</li>
+<li>We can simply start another node to prevent data loss</li>
+</ul>
+<p><img src="images/es-c-3.png" alt="A two-node cluster&#x2014;all primary and replica shards are allocated"></p>
+<h3 id="scale-horizontally">Scale Horizontally</h3>
+<ul>
+<li>One shard each from Node 1 and Node 2 have moved to the new Node 3</li>
+</ul>
+<p><img src="images/es-c-4.png" alt="A three-node cluster&#x2014;shards have been reallocated to spread the load">
+Note: This means that the hardware resources (CPU, RAM, I/O) of each node are being shared among fewer shards, allowing each shard to perform better</p>
+<h3 id="scale-more">Scale more</h3>
+<p>Three primaries and six replicas. This means that we can scale out to a total of nine nodes, again with one shard per node</p>
+<p><img src="images/es-c-5.png" alt="Increasing the number_of_replicas to 2"></p>
+<p>Note: This would allow us to triple search performance compared to our original three-node cluster</p>
+<h3 id="failover-test">Failover Test</h3>
+<ul>
+<li>A cluster must have a master node in order to function correctly</li>
+<li>When a master node dies, the nodes elect a new master</li>
+</ul>
+<p><img src="images/es-c-6.png" alt="Cluster after killing one node"></p>
+<h3 id="installing-elasticsearch-plugins-hands-on">Installing Elasticsearch plugins (hands on)</h3>
+<p>We downloaded the plugins as well: <code>/home/ninja/plugins/</code></p>
+<ul>
+<li>To check the list of installed plugins</li>
+</ul>
+<pre><code>sudo /usr/share/elasticsearch/bin/plugin list
+</code></pre><ul>
+<li>To install the head plugin from a local file</li>
+</ul>
+<pre><code>sudo /usr/share/elasticsearch/bin/plugin install file:/home/ninja/plugins/head.zip
+</code></pre><ul>
+<li>To install the hq plugin from a local file</li>
+</ul>
+<pre><code>sudo /usr/share/elasticsearch/bin/plugin install file:/home/ninja/plugins/hq.zip
+</code></pre><ul>
+<li>To download and install directly from the Internet repo</li>
+</ul>
+<pre><code>sudo /usr/share/elasticsearch/bin/plugin install mobz/elasticsearch-head
+</code></pre><h3 id="elasticsearch-plugins-overview">Elasticsearch plugins overview</h3>
+<p><img src="images/elasticsearch-head-plugin.png" alt=""></p>
+<p><img src="images/elasticsearch-hq-plugin.png" alt=""></p>
+<blockquote>
+<p>Note: We can talk this out with examples.</p>
+</blockquote>
+<h3 id="restful-apis-over-http-curl">Restful APIs over <code>HTTP</code> (CURL)</h3>
+<pre><code>curl -X&lt;VERB&gt; &apos;&lt;SCHEMA&gt;://&lt;HOST&gt;/&lt;PATH&gt;?&lt;QUERY_STRING&gt;&apos; -d &apos;&lt;BODY&gt;&apos;
+</code></pre><ul>
+<li><p>Note</p>
+</li>
+<li><p><code>VERB</code> - The appropriate HTTP method or verb: GET, POST, PUT, HEAD, or DELETE</p>
+</li>
+<li><code>SCHEMA</code> - Either http or https (if you have an https proxy in front of Elasticsearch.)</li>
+<li><code>HOST</code> - The hostname of any node in your Elasticsearch cluster, or localhost for a node on your local machine</li>
+<li><code>PORT</code> - The port running the Elasticsearch HTTP service, which defaults to 9200</li>
+<li><code>QUERY_STRING</code> - Any optional query-string parameters (for example ?pretty will pretty-print the JSON response to make it easier to read.)</li>
+<li><code>BODY</code> - A JSON encoded request body (if the request needs one.)</li>
+</ul>
+<h3 id="what-is-crud">What is CRUD?</h3>
+<ul>
+<li>C - Create</li>
+<li>R - Retrieve</li>
+<li>U - Update</li>
+<li>D - Delete</li>
+</ul>
+<h3 id="crud-operations-over-elasticsearch-hands-on">CRUD operations over Elasticsearch (hands on)</h3>
+<ul>
+<li>Simple Index Creation with XPUT</li>
+</ul>
+<pre><code>curl -XPUT &apos;http://localhost:9200/defcon/&apos;
+</code></pre><ul>
+<li>Add data to your created index</li>
+</ul>
+<pre><code>curl -XPUT &apos;http://localhost:9200/defcon/workshop/1&apos; -d &apos;{&quot;user&quot;:&quot;ninja&quot;}&apos;
+</code></pre><ul>
+<li>To check the Index status</li>
+</ul>
+<pre><code>curl -XGET &apos;http://localhost:9200/defcon/?pretty&apos;
+</code></pre><ul>
+<li>Automatic doc creation in an index with XPOST</li>
+</ul>
+<pre><code>curl -XPOST &apos;http://localhost:9200/defcon/workshop/&apos; -d &apos;{&quot;user&quot;:&quot;ninja&quot;}&apos;
+</code></pre><ul>
+<li>Creating a user profile doc</li>
+</ul>
+<pre><code>curl -XPUT &apos;http://localhost:9200/defcon/workshop/9&apos; -d &apos;{&quot;user&quot;:&quot;admin&quot;, &quot;role&quot;:&quot;tester&quot;, &quot;job&quot;:&quot;engineer&quot;}&apos;
+</code></pre><ul>
+<li>Update the document</li>
+</ul>
+<pre><code>curl -XPOST &apos;http://localhost:9200/defcon/workshop/9&apos; -d &apos;{&quot;user&quot;:&quot;administrator&quot;, &quot;role&quot;:&quot;tester&quot;, &quot;job&quot;:&quot;engineer&quot;}&apos;
+</code></pre><ul>
+<li>Searching a doc in an index. Create 2 docs</li>
+</ul>
+<pre><code>curl -XPOST &apos;http://localhost:9200/defcon/workshop/&apos; -d &apos;{&quot;user&quot;:&quot;abcd&quot;, &quot;role&quot;:&quot;tester&quot;, &quot;job&quot;:&quot;engineer&quot;}&apos;
+</code></pre><pre><code>curl -XPOST &apos;http://localhost:9200/defcon/workshop/&apos; -d &apos;{&quot;user&quot;:&quot;abcd&quot;, &quot;role&quot;:&quot;admin&quot;, &quot;job&quot;:&quot;engineer&quot;}&apos;
+</code></pre><ul>
+<li>Then search</li>
+</ul>
+<pre><code>curl -XGET &apos;http://localhost:9200/defcon/_search?q=user:abcd&amp;pretty&apos;
+</code></pre><ul>
+<li>Deleting a doc in an index</li>
+</ul>
+<pre><code>curl -XDELETE &apos;http://localhost:9200/defcon/workshop/1&apos;
+</code></pre><h2 id="setting-up-logstash">Setting up Logstash</h2>
+<p><img src="images/logstash.png" alt="Logstash Overview"></p>
+<h3 id="logstash-components">Logstash components</h3>
+<p>Logstash consists of 3 main components</p>
+<ul>
+<li>Input: Passing logs to process them into machine understandable format</li>
+<li>Filters: Set of conditionals to perform specific action on a event </li>
+<li>Output: Decision maker for processed events/logs</li>
+</ul>
+<h3 id="basic-logstash-configuration">Basic Logstash configuration</h3>
+<pre><code>input {
+    stdin {}
+    file {}
+    ...
+}
+
+filter {
+    grok {}
+    date {}
+    geoip {}
+    ...
+}
+
+output {
+   elasticsearch {}
+   email {}
+   ...
+}
+</code></pre><h4 id="input">Input</h4>
+<blockquote>
+<p>An input plugin enables a specific source of events to be read by Logstash.</p>
+</blockquote>
+<ul>
+<li>File</li>
+<li>Lumberjack</li>
+<li>S3</li>
+<li>Beats</li>
+<li>Stdin</li>
+<li>Many more.
+<a href="https://www.elastic.co/guide/en/logstash/current/input-plugins.html" target="_blank">https://www.elastic.co/guide/en/logstash/current/input-plugins.html</a></li>
+</ul>
+<h4 id="filter">Filter</h4>
+<blockquote>
+<p>A filter plugin performs intermediary processing on an event. Filters are often applied conditionally depending on the characteristics of the event.</p>
+</blockquote>
+<ul>
+<li>CSV</li>
+<li>GeoIP</li>
+<li>Mutate</li>
+<li>Grok</li>
+<li>Many More.
+<a href="https://www.elastic.co/guide/en/logstash/current/filter-plugins.html" target="_blank">https://www.elastic.co/guide/en/logstash/current/filter-plugins.html</a></li>
+</ul>
+<h4 id="output">Output</h4>
+<blockquote>
+<p>An output plugin sends event data to a particular destination. Outputs are the final stage in the event pipeline.</p>
+</blockquote>
+<ul>
+<li>Elasticsearch</li>
+<li>Email</li>
+<li>Stdout</li>
+<li>S3, file</li>
+<li>HTTP</li>
+<li>Many More. 
+<a href="https://www.elastic.co/guide/en/logstash/current/output-plugins.html" target="_blank">https://www.elastic.co/guide/en/logstash/current/output-plugins.html</a></li>
+</ul>
+<h3 id="installing-logstash-hands-on">Installing logstash (hands on)</h3>
+<ul>
+<li>To install logstash package run the command below</li>
+</ul>
+<pre><code>sudo dpkg -i /home/ninja/pkgs/logstash.deb
+</code></pre><h3 id="basic-logstash-pipeline">Basic logstash pipeline</h3>
+<ul>
+<li>A quick test to check your logstash installation</li>
+</ul>
+<pre><code>sudo /opt/logstash/bin/logstash -e &apos;input { stdin {} } output { stdout {} }&apos;
+</code></pre><h3 id="a-quick-primer-on-grok-filters">A quick primer on Grok filters</h3>
+<ul>
+<li>The syntax for a grok pattern is <code>%{SYNTAX:SEMANTIC}</code></li>
+<li><code>SYNTAX</code> is the name of the pattern that will match your text.<ul>
+<li>For example: <code>1337</code> will be matched by the <code>NUMBER</code> pattern, <code>192.168.123.12</code> will be matched by the <code>IP</code> pattern.</li>
+</ul>
+</li>
+<li>SEMANTIC is the identifier you give to the piece of text being matched.<ul>
+<li>E.g. <code>1337</code> could be the count and <code>192.168.123.12</code> could be a <code>client</code> making a request</li>
+</ul>
+</li>
+</ul>
+<pre><code>%{NUMBER:count} 
+%{IP:client}
+</code></pre><p>Note: Grok is based on pre created regex patterns</p>
+<h3 id="example-grok">Example grok</h3>
+<ul>
+<li>For the following log event</li>
+</ul>
+<pre><code>55.3.244.1 GET /index.html 15824 0.043
+</code></pre><ul>
+<li>This would be the matching grok</li>
+</ul>
+<pre><code>%{IP:client} %{WORD:method} %{URIPATHPARAM:request} %{NUMBER:bytes} %{NUMBER:duration}
+</code></pre><h4 id="consider-the-following-apache-log-event">Consider the following Apache Log Event</h4>
+<ul>
+<li><p>123.249.19.22 - - [01/Feb/2015:14:12:13 +0000] &quot;GET /manager/html HTTP/1.1&quot; 404 448 &quot;-&quot; &quot;Mozilla/3.0 Indy Library)&quot;&lt;/div&gt;</p>
+</li>
+<li><p>Using a regular expression!!</p>
+</li>
+</ul>
+<p><img src="images/apacheregex.png" alt="Apache RegEx"></p>
+<ul>
+<li>Using Grok filter patterns :)</li>
+</ul>
+<pre><code>%{IPV4} %{USER:ident} %{USER:auth} \[%{HTTPDATE:timestamp}\] &quot;(?:%{WORD:verb} %{NOTSPACE:request}(?: HTTP/%{NUMBER:httpversion})?)&quot; %{NUMBER:response} (?:%{NUMBER:bytes}|-)
+</code></pre><ul>
+<li>Things can get even more simpler using an <em>inbuilt</em> grok :) :) </li>
+</ul>
+<pre><code>%{COMBINEDAPACHELOG}
+</code></pre><h3 id="available-logstash-grok-patterns">Available Logstash Grok Patterns</h3>
+<ul>
+<li><a href="https://grokdebug.herokuapp.com/patterns" target="_blank">https://grokdebug.herokuapp.com/patterns</a></li>
+<li><a href="http://grokconstructor.appspot.com/" target="_blank">http://grokconstructor.appspot.com/</a></li>
+<li><a href="https://github.com/logstash-plugins/logstash-patterns-core/blob/master/patterns/grok-patterns" target="_blank">https://github.com/logstash-plugins/logstash-patterns-core/blob/master/patterns/grok-patterns</a></li>
+<li><a href="https://github.com/clay584/logstash_configs" target="_blank">https://github.com/clay584/logstash_configs</a></li>
+</ul>
+<h3 id="apache-log-sample-with-elasticsearch-hands-on">Apache log sample with elasticsearch (hands on)</h3>
+<ul>
+<li><p>Let&apos;s parse some Apache logs in elasticsearch using logstash</p>
+</li>
+<li><p>Create a logstash config file using the following command <code>sudo vi /etc/logstash/conf.d/apache.conf</code></p>
+</li>
+</ul>
+<pre><code>input {
+    file {
+        path =&gt; &quot;/home/ninja/log-samples/access.log&quot;
+        start_position =&gt; beginning
+        ignore_older =&gt; 0
+    }
+}
+filter {
+    grok {
+        match =&gt; { &quot;message&quot; =&gt; &quot;%{COMBINEDAPACHELOG}&quot;}
+    }
+    geoip {
+        source =&gt; &quot;clientip&quot;
+    }
+}
+output {
+    elasticsearch {
+            hosts =&gt; [&quot;localhost:9200&quot;]
+            index =&gt; &quot;apache-logs&quot;
+    }
+    #stdout {}
+}
+</code></pre><ul>
+<li><p>Then provide the config to logstash to start the pipeline <code>sudo /opt/logstash/bin/logstash -f /etc/logstash/conf.d/apache.conf</code></p>
+</li>
+<li><p>Then check the elasticsearch head plugin <code>http://elkhost.defcon:9200/_plugin/head</code></p>
+</li>
+</ul>
+<h2 id="setting-up-kibana">Setting up Kibana</h2>
+<blockquote>
+<p>Kibana is an open source analytics and visualization platform designed to work with Elasticsearch. You use Kibana to search, view, and interact with data stored in Elasticsearch indices</p>
+</blockquote>
+<h3 id="installing-kibana-hands-on">Installing Kibana (hands on)</h3>
+<ul>
+<li>To install the Kibana package, run the command below</li>
+</ul>
+<pre><code>sudo dpkg -i /home/ninja/pkgs/kibana.deb
+</code></pre><h3 id="basic-kibana-configuration">Basic Kibana configuration</h3>
+<p>Just for reference, Here is the kibana config file:</p>
+<pre><code>sudo vi /opt/kibana/config/kibana.yml
+</code></pre><p>Note: Kibana works out of the box support with Elasticsearch</p>
+<ul>
+<li>Uncomment and change the server address to access the kibana dashboard</li>
+</ul>
+<pre><code>server.host: &quot;0.0.0.0&quot;
+</code></pre><ul>
+<li>Then start the kibana service by running</li>
+</ul>
+<pre><code>sudo service kibana start
+</code></pre><ul>
+<li>Kibana Dashboard</li>
+</ul>
+<pre><code>http://elkhost.defcon:5601/
+</code></pre><h3 id="understanding-the-kibana-ui">Understanding the Kibana UI</h3>
+<p><strong>Index Selection</strong></p>
+<p><img src="images/k-1.png" alt=""></p>
+<p><strong>Adding multiple indices</strong></p>
+<p><img src="images/k-2.png" alt=""></p>
+<p><strong>Discovery</strong></p>
+<p><img src="images/k-3.png" alt=""></p>
+<p><strong>Mapped log in JSON format</strong></p>
+<p><img src="images/k-4.png" alt=""></p>
+<p><strong>Visualize</strong></p>
+<p><img src="images/k-5.png" alt=""></p>
+<p><strong>Selecting the search source</strong></p>
+<p><img src="images/k-6.png" alt=""></p>
+<p><strong>Creating a pie chart</strong></p>
+<p><img src="images/k-7.png" alt=""></p>
+<p><strong>Discover</strong></p>
+<p><img src="images/k-9.png" alt=""></p>
+<p><strong>Status</strong></p>
+<p><img src="images/k-10.png" alt=""></p>
+<p><strong>Import/Export</strong></p>
+<p><img src="images/k-11.png" alt=""></p>
+<p>Throughout our exercises, did you notice anything missing?</p>
+<h3 id="securing-elasticsearch--kibana">Securing Elasticsearch &amp; Kibana</h3>
+<ul>
+<li>By default elasticsearch and kibana doesn&apos;t have security</li>
+<li>We are setting up basic authentication using <code>htpasswd</code> and <code>nginx</code> reverse proxy</li>
+<li>The commercial product called <code>shield</code> is available from company. </li>
+<li><code>Search Guard</code> is an alternative open source project for <code>shield</code>.</li>
+</ul>
+<h3 id="basic-authentication-setup-for-elasticsearch--kibana-hands-on">Basic Authentication setup for Elasticsearch &amp; Kibana (hands on)</h3>
+<ul>
+<li>Installing <code>nginx</code> and <code>apache2-utils</code>. (It&apos;s already installed in the virtual machine)</li>
+</ul>
+<pre><code>sudo apt-get install nginx apache2-utils -y
+</code></pre><ul>
+<li>To create basic authentication user and password.</li>
+</ul>
+<pre><code>sudo htpasswd -c /etc/nginx/htpasswd.users elkadmin
+</code></pre><pre><code>Password : D3fc0nN!nj@
+Confirm Password : D3fc0nN!nj@
+</code></pre><blockquote>
+<p>Note:<code>elkadmin</code> is the username and password is <code>D3fc0nN!nj@</code></p>
+</blockquote>
+<ul>
+<li>Then edit the configuration file of nginx using <code>sudo vi /etc/nginx/sites-available/default</code></li>
+</ul>
+<pre><code>server {
+    listen 80; #for Kibana
+
+    server_name localhost;
+
+    auth_basic &quot;Restricted Access&quot;;
+    auth_basic_user_file /etc/nginx/htpasswd.users;
+
+    location / {
+        proxy_pass http://localhost:5601;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection &apos;upgrade&apos;;
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;        
+    }
+}
+
+server {
+    listen 8080; #for Elasticsearch
+
+    server_name localhost;
+
+    auth_basic &quot;Restricted Access&quot;;
+    auth_basic_user_file /etc/nginx/htpasswd.users;
+
+    location / {
+        proxy_pass http://localhost:9200;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection &apos;upgrade&apos;;
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+</code></pre><ul>
+<li>Restart the nginx service</li>
+</ul>
+<pre><code>sudo service nginx restart
+</code></pre><ul>
+<li>Open the <code>elasticsearch.yml</code> and add a host restriction</li>
+</ul>
+<pre><code>sudo vi /etc/elasticsearch/elasticsearch.yml
+</code></pre><ul>
+<li>Restrict ES access to localhost</li>
+</ul>
+<pre><code>network.host: localhost
+</code></pre><ul>
+<li>Then restart the service</li>
+</ul>
+<pre><code>sudo service elasticsearch restart
+</code></pre><ul>
+<li>Add the authentication credentials in Kibana</li>
+</ul>
+<pre><code>sudo vi /opt/kibana/config/kibana.yml
+</code></pre><ul>
+<li>Modify the following entry</li>
+</ul>
+<pre><code>server.host: &quot;localhost&quot;
+</code></pre><ul>
+<li>Then restart the kibana service</li>
+</ul>
+<pre><code>sudo service kibana restart
+</code></pre><ul>
+<li>Test the changes in Elasticsearch and Kibana by navigating to</li>
+</ul>
+<pre><code>http://elkhost.defcon:80
+</code></pre><pre><code>http://elkhost.defcon:8080
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="backup-elasticsearch.html" class="navigation navigation-next " aria-label="Next page: Backup Elasticsearch">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Setup","level":"1.2","depth":1,"next":{"title":"Backup Elasticsearch","level":"1.3","depth":1,"path":"backup-elasticsearch.md","ref":"backup-elasticsearch.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["ga"],"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-15752161-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"setup.md","mtime":"2020-06-01T10:35:26.865Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-01T11:38:35.474Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,2343 +1,648 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Introduction · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
 
-  <title>Ninja level Infrastructure Monitoring : Defensive approach to Security Monitoring & Automation - DEF CON 24
-  </title>
-  <link rel="stylesheet" href="./css/reveal.css" />
-  <link rel="stylesheet" href="./css/theme/black.css" id="theme" />
-  <link rel="stylesheet" href="./css/highlight/zenburn.css" />
-  <link rel="stylesheet" href="./css/print/paper.css" type="text/css" media="print" />
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
 
-</head>
+    
 
-<body>
-  <div class="reveal">
-    <div class="slides">
-      <section data-markdown>
-        <script type="text/template"># Ninja level Infrastructure Monitoring
-#### Defensive approach to Security Monitoring & Automation
-Defcon24 - Las Vegas<br />
-![](images/appsecco.png)
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
 
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-## Hello everyone :)
-#### Welcome to our awesome workshop!
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-## SCHEDULE
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
-Saturday, 6th August 2016<br />
-10:00 - 14:00
-<br />
+    
+    <link rel="next" href="setup.html" />
+    
+    
 
-There will be a 15 minute break at 11:45 AM
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-<div align="left">
-Basic overview: 30 min<br />
-Setting up the ELK stack (hands on): 75 min<br />
-Backing up elasticsearch using curator (hands on): 15 min<br />
-Alerting & Advanced dashboards (hands on): 30 min<br />
-A note on best practices: 10 min<br />
-Penetration testing findings: 10 min<br />
-Ansible Playbook for the entire setup: 10 min<br />
-Exercise (hands on): 30 min<br />
-Q & A
-
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
 </div>
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-### Pre-requisites
 
-- This workshop is intended for beginner to mid-level, we are expecting that participants are comfortable with basic Linux CLI usage
-- Laptop with administrative privileges (to install VirtualBox)
-- VirtualBox
-- 20GB hard disk space for virtual machines
-- Minimum 4 GB RAM
-- Enthusiasm to learn cool stuff :)
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-## Instructions
-1. Please follow the commands and the overall flow as given in the slides
-2. Please direct all questions/queries to me and Madhu
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-## What will you learn today?
-- Infrastructure monitoring by aggregating and analysing logs
-- Centralised logging using the ELK stack
-- Creating attack pattern dashboards for monitoring
-- Exporting and Importing dashboards for reporting and reuse
-- Advanced configurations of the ELK stack
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-## (Bonus)
-Best practices and Security Tips
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-## What we are not covering
-- Performance tuning and optimisation for clusters
-- Multi cluster configurations
-- Custom plugins and scripts for Logstash
+            
+                <nav role="navigation">
+                
 
-<aside class="notes"><p>Time constraint + Internet access + Resource constraints</p>
-</aside></script>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-## So what is Ninja Level Infrastructure Monitoring?
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### What is monitoring?
-![](images/monitor.png)
 
-<aside class="notes"><p>observe an event and check the progress over a period of time.</p>
-</aside></script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### What is this 'infrastructure' we keep talking about?
->![](images/itinfra.png)
+<ul class="summary">
+    
+    
 
-<aside class="notes"><p>All your assets in an enterprisey environment. The routers, firewalls, web app servers, linux boxes, ldap servers, database servers etc.</p>
-</aside></script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### What is 'Ninja level'?
->Errrrr.. This was simply added to make this workshop title cooler :)
+    
 
-![](images/ninja.png)
-</script>
-        </section>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-## About us
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Madhu Akula
+    
+        
+        
+    
+        <li class="chapter active" data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
 
-- Automation Ninja @Appsecco
-- Security & DevOps lover
-- Trainer & Speaker
-- Acknowledged by more than 200 giant companies like Google, Microsoft, Yahoo, Adobe, etc for finding security vulnerabilities
-- Open source contributor
-- Never ending learner!
-- Twitter: @madhuakula
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Riyaz Walikar
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="setup.html">
+            
+                <a href="setup.html">
+            
+                    
+                    Setup
+            
+                </a>
+            
 
-- Chief Offensive Security Officer @Appsecco
-- Over 9 years of industry experience in breaking infrastructure security and web applications
-- Security evangelist, leader for null Bangalore and OWASP chapters
-- Trainer/Speaker : BlackHat Asia, BlackHat USA, nullcon Goa, nullcon Delhi, c0c0n, OWASP AppSec USA
-- Twitter : @riyazwalikar and @wincmdfu
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="backup-elasticsearch.html">
+            
+                <a href="backup-elasticsearch.html">
+            
+                    
+                    Backup Elasticsearch
+            
+                </a>
+            
 
-<aside class="notes"><p>As COSO, it is interesting/important to analyze logs for attack patterns, look at real world exploits coming in and map them to give better recommendations to clients<br/> One of the most underrated vulnerabilities out there is OWASP A5 (Security Misconfiguration) -&gt; Sanity Check and logs can help detect.</p>
-</aside></script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### About Appsecco
-Enable companies to design, specify, develop and purchase software that is secure
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="alerting-and-dashboards.html">
+            
+                <a href="alerting-and-dashboards.html">
+            
+                    
+                    Alerting & Dashboards
+            
+                </a>
+            
 
-Work with companies to test existing software they have for security issues and give them the information they need to fix any problems we find
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="ansible-playbook.html">
+            
+                <a href="ansible-playbook.html">
+            
+                    
+                    Ansible Playbook
+            
+                </a>
+            
 
-Ensure that companies can recover from security incidents they suffer and work with them to stop them from reoccurring
-</script>
-        </section>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-### Quick look at the basics of "centralised" logging
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-## What are logs?
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="security-testing.html">
+            
+                <a href="security-testing.html">
+            
+                    
+                    Security Testing
+            
+                </a>
+            
 
-- A log (file) is a collection of records or events
-- Logs used to be a (often indecipherable) line of text intended for offline human analysis of what went wrong
-- Logs are a critical part of any system giving you an insight into the working of a system
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-## Why is it boring to work with logs?
-- Can be pretty large
-- Correlation can be painful
-- Others?
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-## What is centralised logging?
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="general-best-practices-checklist.html">
+            
+                <a href="general-best-practices-checklist.html">
+            
+                    
+                    General Best Practices Checklist
+            
+                </a>
+            
 
-- Managing logs and accessing them can get complicated with multiple hosts
-- Searching for a particular error across hundreds of log files on hundreds of servers is difficult without good tools
-- A common approach to this problem is to setup a centralised logging solution so that multiple logs can be aggregated in a central location
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="exercise.html">
+            
+                <a href="exercise.html">
+            
+                    
+                    Exercise
+            
+                </a>
+            
 
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### How is it different from traditional logging?
-- Logs are collected at a central server
-- Parsing becomes simpler since data is accessible at a single location
-- A common issue across multiple hosts/services can be identified by correlating specific time frames
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### What are the problems of traditional logging?
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-#### No Consistency 
-(it’s difficult to be jack-of-all trades)
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="alternative-options.html">
+            
+                <a href="alternative-options.html">
+            
+                    
+                    EXTRA: Alternatives
+            
+                </a>
+            
 
-- Difficulty in logging for each application, system, device
-- Interpreting various type of logs
-- Variation in format makes it challenging to search
-- Many types of time formats
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-#### No Centralisation 
-(simply put, log data is everywhere)
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="elasticsearch-config-checklist.html">
+            
+                <a href="elasticsearch-config-checklist.html">
+            
+                    
+                    EXTRA: Elasticsearch Configuration Checklist
+            
+                </a>
+            
 
-- Logs in many locations on various servers
-- SSH + GREP don’t scale
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-#### Accessibility of Log Data 
-(much of the data is difficult to locate and manage)
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="references.html">
+            
+                <a href="references.html">
+            
+                    
+                    References
+            
+                </a>
+            
 
-- Access is often difficult
-- High expertise to mine data
-- Logs can be difficult to find
-- Immense size of Log Data
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="license.html">
+            
+                <a href="license.html">
+            
+                    
+                    License
+            
+                </a>
+            
 
-</script>
-        </section>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-## The ELK stack
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Elasticsearch, Logstash and Kibana
-Different open source modules working together
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-- Helps users/admins to collect, analyse and visualise data in (near) real-time
-- Each module fits based on your use case and environment
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Components of the stack
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="q-and-a.html">
+            
+                <a href="q-and-a.html">
+            
+                    
+                    Q&A
+            
+                </a>
+            
 
-- Elasticsearch
-- Logstash
-- Kibana
-- (Beats)
-</script>
-        </section>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-##![](images/elasticsearch_def.png)
-<small>Ref: https://www.elastic.co/products</small>
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-## Elasticsearch
-- Distributed and Highly available search engine, written in Java and uses Groovy
-- Built on top of Lucene
-- Multi Tenant with Multi types and a set of APIs
-- Document Oriented providing (near) real time search
-</script>
-        </section>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-## ![](images/logstash_def.png)
-<small>Ref: https://www.elastic.co/products</small>
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-## Logstash
-- Tool for managing events and logs written in Ruby
-- Centralised data processing of all types of logs
-- Consists of 3 main components
-    + Input : Passing logs to process them into machine understandable format
-    + Filter : Set of conditions to perform specific action on a event
-    + Output : Decision maker for processed events/logs
-</script>
-        </section>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-## ![](images/kibana_def.png)
-<small>Ref: https://www.elastic.co/products</small>
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Kibana
-- Powerful front-end dashboard written in JavaScript
-- Browser based analytics and search dashboard for Elasticsearch
-- Flexible analytics & visualisation platform
-- Provides data in the form of charts, graphs, counts, maps, etc. in real-time
-</script>
-        </section>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-## ![](images/beats_def.png)
-<small>Ref: https://www.elastic.co/products</small>
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Beats
-- Lightweight shippers for Elasticsearch & Logstash
-- Capture all sorts of operational data like logs or network packet data
-- It can send logs to either elasticsearch, logstash
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-- Different kind of beats
-    + Libbeat : The Go framework for creating new Beats
-    + Packetbeat : Tap into your wire data
-    + Filebeat : Lightweight log forwarder to Logstash & Elasticsearch
-    + Winlogbeat : Sends windows event logs
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-#### Filebeat
-- Lightweight Shipper for Log Data
-- Filebeat is an opensource file harvester
-- Used to fetch logs files and feed them into logstash
-- It has replaced logstash-forwarder
-</script>
-        </section>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-## ELK overview
->![](images/elk_overall.png)
-<small>Ref: https://www.elastic.co/products</small>
-</script>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-## A quick history lesson
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### About Elastic
+            
+        </li>
+    
 
-- `Shay Banon` created Compass in 2004, third version of Compass is the first version of Elasticsearch, released in Feb 2010
-- Elasticsearch was founded in 2012, Rashid (Kibana) joined Jan 2013 and Jordan (Logstash) joined in Aug 2013. (elastic.co)
-- Combined stack is now called `Elastic Stack` and `X-Pack`
-</script>
-        </section>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-## Terms we should be aware of in context to ELK
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Node
+    
 
-> A node is a running instance of elasticsearch which belongs to a cluster.
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Cluster
+    <li class="divider"></li>
 
-> Cluster is a collection of one or more nodes that together holds your entire data and provides indexing and search capabilities across all nodes. 
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
 
-<br />
-> Nodes must have the same cluster.name to belong to the same cluster.
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Document
 
-> A document is a basic unit of information that can be stored and searched. 
- 
-<br />
+                </nav>
+            
+        
+    </div>
 
->It refers to the top-level, or root object that is serialised into JSON and stored in Elasticsearch under a unique ID.
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Index
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
 
-> An index is a collection of documents that have somewhat similar characteristics. It has mappings which define multiple types.
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Type
+<div class="book-header" role="navigation">
+    
 
-> Within an index, you can define one or more types. A type is a logical category/partition of your index whose semantics are completely up to you.
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Shard
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Introduction</a>
+    </h1>
+</div>
 
-> Elasticsearch provides the ability to subdivide an index into multiple pieces called shards since an index can store a large amount of data that can exceed the hardware limits of a single node. 
 
-<br />
-> Each shard is in itself a fully-functional and independent "index" that can be hosted on any node in the cluster.
 
-<aside class="notes"><p>For eg, a single index of a billion docs taking up 1TB of disk space may not fit on the disk of a single node or may be too slow to serve search requests from a single node alone.</p>
-<p>When you create an index, you can simply define the number of shards that you want.</p>
-</aside></script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Replica
 
->Elasticsearch allows you to make one or more copies of your index’s shards into what are called replica shards, or replicas for short.
-
-<aside class="notes"><p>For this reason, it is important to note that a replica shard is never allocated on the same node as the original/primary shard that it was copied from
-It provides high availability in case a shard/node fails. Also to scale out your search volume/throughput since searches can be executed on all replicas in parallel</p>
-<hr>
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="ninja-level-infrastructure-monitoring">Ninja level Infrastructure Monitoring</h1>
+<h4 id="defensive-approach-to-security-monitoring--automation">Defensive approach to Security Monitoring &amp; Automation</h4>
+<h3 id="defcon24---las-vegas">Defcon24 - Las Vegas</h3>
+<p>Hello everyone :)
+Welcome to our awesome workshop!</p>
+<p>Refer to <a href="https://github.com/madhuakula/defcon24-infra-monitoring-workshop" target="_blank">https://github.com/madhuakula/defcon24-infra-monitoring-workshop</a> for scripts, playbooks, configs, etc.</p>
+<h2 id="schedule">SCHEDULE</h2>
+<ul>
+<li>Saturday, 6th August 2016</li>
+<li>10:00 - 14:00</li>
+<li>There will be a 15 minute break at 11:45 AM</li>
+</ul>
+<h2 id="overview">Overview</h2>
+<ul>
+<li>Basic overview: 30 min</li>
+<li>Setting up the ELK stack (hands on): 75 min</li>
+<li>Backing up elasticsearch using curator (hands on): 15 min</li>
+<li>Alerting &amp; Advanced dashboards (hands on): 30 min</li>
+<li>A note on best practices: 10 min</li>
+<li>Penetration testing findings: 10 min</li>
+<li>Ansible Playbook for the entire setup: 10 min</li>
+<li>Exercise (hands on): 30 min</li>
+<li>Q &amp; A</li>
+</ul>
+<h3 id="pre-requisites">Pre-requisites</h3>
+<ul>
+<li>This workshop is intended for beginner to mid-level, we are expecting that participants are comfortable with basic Linux CLI usage</li>
+<li>Laptop with administrative privileges (to install VirtualBox)</li>
+<li>VirtualBox</li>
+<li>20GB hard disk space for virtual machines</li>
+<li>Minimum 4 GB RAM</li>
+<li>Enthusiasm to learn cool stuff :)</li>
+</ul>
+<h2 id="instructions">Instructions</h2>
+<ol>
+<li>Please follow the commands and the overall flow as given in the slides</li>
+<li>Please direct all questions/queries to me and Madhu</li>
+</ol>
+<h2 id="what-will-you-learn-today">What will you learn today?</h2>
+<ul>
+<li>Infrastructure monitoring by aggregating and analysing logs</li>
+<li>Centralised logging using the ELK stack</li>
+<li>Creating attack pattern dashboards for monitoring</li>
+<li>Exporting and Importing dashboards for reporting and reuse</li>
+<li>Advanced configurations of the ELK stack</li>
+</ul>
+<h2 id="bonus">(Bonus)</h2>
+<p>Best practices and Security Tips</p>
+<h2 id="what-we-are-not-covering">What we are not covering</h2>
+<ul>
+<li>Performance tuning and optimisation for clusters</li>
+<li>Multi cluster configurations</li>
+<li>Custom plugins and scripts for Logstash</li>
+</ul>
+<blockquote>
+<p>Note: Time constraint + Internet access + Resource constraints</p>
+</blockquote>
+<h2 id="so-what-is-ninja-level-infrastructure-monitoring">So what is Ninja Level Infrastructure Monitoring?</h2>
+<h3 id="what-is-monitoring">What is monitoring?</h3>
+<p><img src="images/monitor.png" alt=""></p>
+<p>Note: observe an event and check the progress over a period of time.</p>
+<h3 id="what-is-this-infrastructure-we-keep-talking-about">What is this &apos;infrastructure&apos; we keep talking about?</h3>
+<blockquote>
+<p><img src="images/itinfra.png" alt=""></p>
+</blockquote>
+<p>Note: All your assets in an enterprisey environment. The routers, firewalls, web app servers, linux boxes, ldap servers, database servers etc.</p>
+<h3 id="what-is-ninja-level">What is &apos;Ninja level&apos;?</h3>
+<blockquote>
+<p>Errrrr.. This was simply added to make this workshop title cooler :)</p>
+</blockquote>
+<p><img src="images/ninja.png" alt=""></p>
+<h2 id="about-us">About us</h2>
+<h3 id="madhu-akula">Madhu Akula</h3>
+<ul>
+<li>Automation Ninja @Appsecco</li>
+<li>Security &amp; DevOps lover</li>
+<li>Trainer &amp; Speaker</li>
+<li>Acknowledged by more than 200 giant companies like Google, Microsoft, Yahoo, Adobe, etc for finding security vulnerabilities</li>
+<li>Open source contributor</li>
+<li>Never ending learner!</li>
+<li>Twitter: @madhuakula</li>
+</ul>
+<h3 id="riyaz-walikar">Riyaz Walikar</h3>
+<ul>
+<li>Chief Offensive Security Officer @Appsecco</li>
+<li>Over 9 years of industry experience in breaking infrastructure security and web applications</li>
+<li>Security evangelist, leader for null Bangalore and OWASP chapters</li>
+<li>Trainer/Speaker : BlackHat Asia, BlackHat USA, nullcon Goa, nullcon Delhi, c0c0n, OWASP AppSec USA</li>
+<li>Twitter : @riyazwalikar and @wincmdfu</li>
+</ul>
+<h3 id="quick-look-at-the-basics-of-centralised-logging">Quick look at the basics of &quot;centralised&quot; logging</h3>
+<h2 id="what-are-logs">What are logs?</h2>
+<ul>
+<li>A log (file) is a collection of records or events</li>
+<li>Logs used to be a (often indecipherable) line of text intended for offline human analysis of what went wrong</li>
+<li>Logs are a critical part of any system giving you an insight into the working of a system</li>
+</ul>
+<h2 id="why-is-it-boring-to-work-with-logs">Why is it boring to work with logs?</h2>
+<ul>
+<li>Can be pretty large</li>
+<li>Correlation can be painful</li>
+<li>Others?</li>
+</ul>
+<h2 id="what-is-centralised-logging">What is centralised logging?</h2>
+<ul>
+<li>Managing logs and accessing them can get complicated with multiple hosts</li>
+<li>Searching for a particular error across hundreds of log files on hundreds of servers is difficult without good tools</li>
+<li>A common approach to this problem is to setup a centralised logging solution so that multiple logs can be aggregated in a central location</li>
+</ul>
+<h3 id="how-is-it-different-from-traditional-logging">How is it different from traditional logging?</h3>
+<ul>
+<li>Logs are collected at a central server</li>
+<li>Parsing becomes simpler since data is accessible at a single location</li>
+<li>A common issue across multiple hosts/services can be identified by correlating specific time frames</li>
+</ul>
+<h3 id="what-are-the-problems-of-traditional-logging">What are the problems of traditional logging?</h3>
+<h4 id="no-consistency">No Consistency</h4>
+<p>(it&#x2019;s difficult to be jack-of-all trades)</p>
+<ul>
+<li>Difficulty in logging for each application, system, device</li>
+<li>Interpreting various type of logs</li>
+<li>Variation in format makes it challenging to search</li>
+<li>Many types of time formats</li>
+</ul>
+<h4 id="no-centralisation">No Centralisation</h4>
+<p>(simply put, log data is everywhere)</p>
+<ul>
+<li>Logs in many locations on various servers</li>
+<li>SSH + GREP don&#x2019;t scale</li>
+</ul>
+<h4 id="accessibility-of-log-data">Accessibility of Log Data</h4>
+<p>(much of the data is difficult to locate and manage)</p>
+<ul>
+<li>Access is often difficult</li>
+<li>High expertise to mine data</li>
+<li>Logs can be difficult to find</li>
+<li>Immense size of Log Data</li>
+</ul>
+<h2 id="the-elk-stack">The ELK stack</h2>
+<h3 id="elasticsearch-logstash-and-kibana">Elasticsearch, Logstash and Kibana</h3>
+<p>Different open source modules working together</p>
+<ul>
+<li>Helps users/admins to collect, analyse and visualise data in (near) real-time</li>
+<li>Each module fits based on your use case and environment</li>
+</ul>
+<h3 id="components-of-the-stack">Components of the stack</h3>
+<ul>
+<li>Elasticsearch</li>
+<li>Logstash</li>
+<li>Kibana</li>
+<li>(Beats)</li>
+</ul>
+<h2 id=""><img src="images/elasticsearch_def.png" alt=""></h2>
+<p>Ref: <a href="https://www.elastic.co/products" target="_blank">https://www.elastic.co/products</a></p>
+<h2 id="elasticsearch">Elasticsearch</h2>
+<ul>
+<li>Distributed and Highly available search engine, written in Java and uses Groovy</li>
+<li>Built on top of Lucene</li>
+<li>Multi Tenant with Multi types and a set of APIs</li>
+<li>Document Oriented providing (near) real time search</li>
+</ul>
+<h2 id=""><img src="images/logstash_def.png" alt=""></h2>
+<p>Ref: <a href="https://www.elastic.co/products" target="_blank">https://www.elastic.co/products</a></p>
+<h2 id="logstash">Logstash</h2>
+<ul>
+<li>Tool for managing events and logs written in Ruby</li>
+<li>Centralised data processing of all types of logs</li>
+<li>Consists of 3 main components<ul>
+<li>Input : Passing logs to process them into machine understandable format</li>
+<li>Filter : Set of conditions to perform specific action on a event</li>
+<li>Output : Decision maker for processed events/logs</li>
+</ul>
+</li>
+</ul>
+<h2 id=""><img src="images/kibana_def.png" alt=""></h2>
+<p>Ref: <a href="https://www.elastic.co/products" target="_blank">https://www.elastic.co/products</a></p>
+<h3 id="kibana">Kibana</h3>
+<ul>
+<li>Powerful front-end dashboard written in JavaScript</li>
+<li>Browser based analytics and search dashboard for Elasticsearch</li>
+<li>Flexible analytics &amp; visualisation platform</li>
+<li>Provides data in the form of charts, graphs, counts, maps, etc. in real-time</li>
+</ul>
+<h2 id=""><img src="images/beats_def.png" alt=""></h2>
+<p>Ref: <a href="https://www.elastic.co/products" target="_blank">https://www.elastic.co/products</a></p>
+<h3 id="beats">Beats</h3>
+<ul>
+<li>Lightweight shippers for Elasticsearch &amp; Logstash</li>
+<li>Capture all sorts of operational data like logs or network packet data</li>
+<li>It can send logs to either elasticsearch, logstash</li>
+<li>Different kind of beats<ul>
+<li>Libbeat : The Go framework for creating new Beats</li>
+<li>Packetbeat : Tap into your wire data</li>
+<li>Filebeat : Lightweight log forwarder to Logstash &amp; Elasticsearch</li>
+<li>Winlogbeat : Sends windows event logs</li>
+</ul>
+</li>
+</ul>
+<h4 id="filebeat">Filebeat</h4>
+<ul>
+<li>Lightweight Shipper for Log Data</li>
+<li>Filebeat is an opensource file harvester</li>
+<li>Used to fetch logs files and feed them into logstash</li>
+<li>It has replaced logstash-forwarder</li>
+</ul>
+<h2 id="elk-overview">ELK overview</h2>
+<blockquote>
+<p><img src="images/elk_overall.png" alt=""></p>
+</blockquote>
+<p>Ref: <a href="https://www.elastic.co/products" target="_blank">https://www.elastic.co/products</a></p>
+<h2 id="a-quick-history-lesson">A quick history lesson</h2>
+<h3 id="about-elastic">About Elastic</h3>
+<ul>
+<li><code>Shay Banon</code> created Compass in 2004, third version of Compass is the first version of Elasticsearch, released in Feb 2010</li>
+<li>Elasticsearch was founded in 2012, Rashid (Kibana) joined Jan 2013 and Jordan (Logstash) joined in Aug 2013. (elastic.co)</li>
+<li>Combined stack is now called <code>Elastic Stack</code> and <code>X-Pack</code></li>
+</ul>
+<h2 id="terms-we-should-be-aware-of-in-context-to-elk">Terms we should be aware of in context to ELK</h2>
+<h3 id="node">Node</h3>
+<blockquote>
+<p>A node is a running instance of elasticsearch which belongs to a cluster.</p>
+</blockquote>
+<h3 id="cluster">Cluster</h3>
+<blockquote>
+<p>Cluster is a collection of one or more nodes that together holds your entire data and provides indexing and search capabilities across all nodes. </p>
+<p>Nodes must have the same cluster.name to belong to the same cluster.</p>
+</blockquote>
+<h3 id="document">Document</h3>
+<blockquote>
+<p>A document is a basic unit of information that can be stored and searched. </p>
+<p>It refers to the top-level, or root object that is serialised into JSON and stored in Elasticsearch under a unique ID.</p>
+</blockquote>
+<h3 id="index">Index</h3>
+<blockquote>
+<p>An index is a collection of documents that have somewhat similar characteristics. It has mappings which define multiple types.</p>
+</blockquote>
+<h3 id="type">Type</h3>
+<blockquote>
+<p>Within an index, you can define one or more types. A type is a logical category/partition of your index whose semantics are completely up to you.</p>
+</blockquote>
+<h3 id="shard">Shard</h3>
+<blockquote>
+<p>Elasticsearch provides the ability to subdivide an index into multiple pieces called shards since an index can store a large amount of data that can exceed the hardware limits of a single node. </p>
+<p>Each shard is in itself a fully-functional and independent &quot;index&quot; that can be hosted on any node in the cluster.</p>
+<p>For eg, a single index of a billion docs taking up 1TB of disk space may not fit on the disk of a single node or may be too slow to serve search requests from a single node alone. When you create an index, you can simply define the number of shards that you want.</p>
+</blockquote>
+<h3 id="replica">Replica</h3>
+<blockquote>
+<p>Elasticsearch allows you to make one or more copies of your index&#x2019;s shards into what are called replica shards, or replicas for short.</p>
+<p>For this reason, it is important to note that a replica shard is never allocated on the same node as the original/primary shard that it was copied from. It provides high availability in case a shard/node fails. Also to scale out your search volume/throughput since searches can be executed on all replicas in parallel</p>
+</blockquote>
 <h3 id="snapshot-and-restore">Snapshot and Restore</h3>
 <blockquote>
 <p>A copy of the current state and data in a cluster that is saved to a shared repository.</p>
-</blockquote>
-<blockquote>
 <p>Elasticsearch provides a snapshot API to achieve this.</p>
 </blockquote>
-</aside></script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Routing
-
-> A mechanism in Elasticsearch that identifies which shard a particular document resides in.
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Near real time
-
-> Elasticsearch is a near real time search platform. 
-
-<br />
-
-> What this means is there is a slight latency (normally one second) from the time you index a document until the time it becomes searchable.
-</script>
-        </section>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-## Setting up the ELK Stack
-![ELK Basic Setup](images/ELK_basic_setup.png)
-
-<small>[90 minutes]</small>
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-### Overall architecture diagram
-![](images/ourstructure.png)
-</script>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-### The Virtual Machine
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-Import the provided `infra-mon-elk.ova` file into Virtual Box
-
-![](images/setup/vbox_import_ova.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-Change the location of the disk (if you want)
-![](images/setup/vbox_import_ova_change_disk_location.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-Boot the VM
-```
-user: ninja
-password: ninja
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-Check your IP address
-
-```
-ifconfig
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-Check connectivity to the VM **from** your local computer
-
-```
-ping <IP_obtained_from_previous_step>
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-Add a host entry in your **host machine**
-
-(use sudo/administrator)
-
-```
-192.168.56.101  elkhost.defcon
-```
-
-```
-notepad %windir%\System32\drivers\etc\hosts
-```
-
-```
-echo "192.168.56.101  elkhost.defcon" | sudo tee --append /etc/hosts
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-
-### Installing Java
-
-- Elasticsearch & Logstash requires Java to run
-- The virtual machine already has JAVA installed
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Installing Java
-- The commands below will add the repository and install Java (in case you want to try this out)
-
-```
-sudo add-apt-repository -y ppa:webupd8team/java
-sudo apt-get update -y
-sudo apt-get -y install oracle-java8-installer
-```
-
-- Check the JAVA installation version by running the command below
-
-```
-java -version
-```
-</script>
-        </section>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-## Setting up Elasticsearch
-(let's get our hands dirty!)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">**PS:** We have provided installer files in the VM `/home/ninja/pkgs` directory
-<br />
-<br />
-**PPS:** We weren't sure of the Internet connectivity here when creating the VM
-</div>
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Installing Elasticsearch
-(hands on)
-
-- Install Elasticsearch by running the command below:
-
-```
-sudo dpkg -i /home/ninja/pkgs/elasticsearch.deb
-```
-
-<aside class="notes"><p>since the deb file has already been downloaded. The usual route would be to add the Elasticsearch gpg key, add the Elasticsearch repo to the sources and then the standard apt-update and apt-get install.</p>
-</aside></script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-- Start Elasticsearch service by running:
-
-```
-sudo service elasticsearch start
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-- Check whether Elasticsearch is running or not:
-
-```
-curl -XGET 'http://localhost:9200'
-```
-
-</script>
-        </section>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-### Elasticsearch configuration
-(hands on)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-- Some basic configurations to start with:
-
-```
-sudo vi /etc/elasticsearch/elasticsearch.yml
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-Uncomment the following lines, make the changes as shown below and save the file:
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Cluster name should be unique:</div>
-
-```
-cluster.name: elk-defcon
-```
-
-<div align="left">Node name is to identify the node in a cluster:</div>
-```
-node.name: node-1
-```
-
-<div align="left">To avoid memory swapping for Elasticsearch:</div>
-```
-bootstrap.mlockall: true
-```
-
-<div align="left">Access:</div>
-```
-network.host: 0.0.0.0
-```
-
-
-<aside class="notes"><p>Cluster name used to connect across nodes.<br />
-Node names are mostly hostnames.<br />
-To avoid swapping for elasticsearch.<br />
-Protect access.<br /></p>
-</aside></script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Restart the Elasticsearch service:</div>
-
-```
-sudo service elasticsearch restart
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Check the Elasticsearch cluster status</div>
-
-```
-curl -XGET 'http://localhost:9200/_cluster/health?pretty'
-
-curl -XGET 'http://localhost:9200/_cluster/state?pretty'
-```
-
-<br />
-<div style="font-size:15px" align="left">
-- <font color="green">`green`</font> - All primary and replica shards are active.
-- <font color="yellow">`yellow`</font> - All primary shards are active, but not all replica shards are active.
-- <font color="red">`red`</font> - Not all primary shards are active.
-<div>
-</script>
-        </section>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-### Setting up another node
-(hands on)
-
-####PS: Open another SSH session
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">To add another node, we extract the files from the elasticsearch tar zip:</div>
-
-```
-tar -xvf /home/ninja/pkgs/elasticsearch-2.3.4.tar.gz -C /home/ninja/pkgs/
-
-cd /home/ninja/pkgs/elasticsearch-2.3.4
-```
-
-<div align="left">And edit the config as we did for the previous node:</div>
-
-```
-vi config/elasticsearch.yml
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Add a node name, while keeping the cluster name constant across both the nodes:</div>
-```
-cluster.name: elk-defcon
-node.name: node-2
-bootstrap.mlockall: true
-network.host: 0.0.0.0
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Start the second node by running the following command:</div>
-
-```
-./bin/elasticsearch
-```
-
-<aside class="notes"><p>We use the same VM to install another node on the side</p>
-</aside></script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Recheck the Elasticsearch cluster status now:</div>
-
-```
-curl -XGET 'http://localhost:9200/_cluster/health?pretty'
-
-curl -XGET 'http://localhost:9200/_cluster/state?pretty'
-```
-</script>
-        </section>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-
-## So What happens in a multi node cluster?
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Clustering
-
-> Elasticsearch is built to be always available, and to scale. Scale can come from buying bigger servers (vertical scale, or scaling up) or from buying more servers (horizontal scale, or scaling out).
-
-<aside class="notes"><p>We need to start by understanding the word &#39;Clustering&#39; in context with Elasticsearch</p>
-</aside></script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### An Empty Cluster
-
-Our cluster with a single node, with no data and no indices:
-
-![A cluster with one empty node](images/es-c-1.png)
-
-- A node is a running instance of Elasticsearch
-- A Cluster consists of one or more nodes with the same cluster.name
-
-<aside class="notes"><p>By default Elasticsearch will have 5 primary shards and 1 replica shard with cluster name <code>elasticsearch</code> and node name as a random Marvel character.</p>
-</aside></script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Adding index
-
-- In an empty one-node cluster, we will assign three primary shards and one replica
-- There is one replica for all the primary shards
-
-![A single-node cluster with an index](images/es-c-2.png)
-
-<aside class="notes"><p>Because there is no separate node, the replica shard becomes unassigned. Which is why it is not denoted in this image.</p>
-</aside></script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Add Failover
-
-- Running a single node means that you have a single point of failure - there is no redundancy
-- We can simply start another node to prevent data loss
-
-![A two-node cluster—all primary and replica shards are allocated](images/es-c-3.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Scale Horizontally
-
-- One shard each from Node 1 and Node 2 have moved to the new Node 3
-
-![A three-node cluster—shards have been reallocated to spread the load](images/es-c-4.png)
-<aside class="notes"><p>This means that the hardware resources (CPU, RAM, I/O) of each node are being shared among fewer shards, allowing each shard to perform better</p>
-</aside></script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Scale more
-
-Three primaries and six replicas. This means that we can scale out to a total of nine nodes, again with one shard per node
-
-![Increasing the number_of_replicas to 2](images/es-c-5.png)
-
-<aside class="notes"><p>This would allow us to triple search performance compared to our original three-node cluster</p>
-</aside></script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Failover Test
-
-- A cluster must have a master node in order to function correctly
-- When a master node dies, the nodes elect a new master
-
-![Cluster after killing one node](images/es-c-6.png)
-</script>
-        </section>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-### Installing Elasticsearch plugins
-(hands on)
-<br />
-<br />
-We downloaded the plugins as well: `/home/ninja/plugins/`
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">To check the list of installed plugins</div>
-
-```
-sudo /usr/share/elasticsearch/bin/plugin list
-```
-
-<div align="left">To install the head plugin from a local file:</div>
-
-```
-sudo /usr/share/elasticsearch/bin/plugin install file:/home/ninja/plugins/head.zip
-```
-
-<div align="left">To install the hq plugin from a local file:</div>
-
-```
-sudo /usr/share/elasticsearch/bin/plugin install file:/home/ninja/plugins/hq.zip
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">To download and install directly from the Internet repo:</div>
-
-```
-sudo /usr/share/elasticsearch/bin/plugin install mobz/elasticsearch-head
-```
-</script>
-        </section>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-### Elasticsearch plugins overview
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-![](images/elasticsearch-head-plugin.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-![](images/elasticsearch-hq-plugin.png)
-
-<aside class="notes"><p>We can talk this out with examples.</p>
-</aside></script>
-        </section>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-### Restful APIs over `HTTP` (CURL)
-
-```
-curl -X<VERB> '<SCHEMA>://<HOST>/<PATH>?<QUERY_STRING>' -d '<BODY>'
-```
-<br />
-<aside class="notes"><div style="font-size:15px" align="left">
-`VERB` - The appropriate HTTP method or verb: GET, POST, PUT, HEAD, or DELETE.<br />
-`SCHEMA` - Either http or https (if you have an https proxy in front of Elasticsearch.)<br />
-`HOST` - The hostname of any node in your Elasticsearch cluster, or localhost for a node on your local machine.<br />
-`PORT` - The port running the Elasticsearch HTTP service, which defaults to 9200.<br />
-`QUERY_STRING` - Any optional query-string parameters (for example ?pretty will pretty-print the JSON response to make it easier to read.)<br />
-`BODY` - A JSON encoded request body (if the request needs one.)<br />
-</font>
-</div></aside></script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-### What is CRUD?
-
-C - Create
-R - Retrieve
-U - Update
-D - Delete
-</script>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-### CRUD operations over Elasticsearch
-(hands on)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Simple Index Creation with XPUT:</div>
- 
-```
-curl -XPUT 'http://localhost:9200/defcon/'
-```
-
-<div align="left">Add data to your created index:</div>
-
-```
-curl -XPUT 'http://localhost:9200/defcon/workshop/1' -d '{"user":"ninja"}'
-```
-
-<div align="left">To check the Index status:</div>
-
-```
-curl -XGET 'http://localhost:9200/defcon/?pretty'
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Automatic doc creation in an index with XPOST:</div>
-
-```
-curl -XPOST 'http://localhost:9200/defcon/workshop/' -d '{"user":"ninja"}'
-```
-
-<div align="left">Creating a user profile doc:</div>
-
-```
-curl -XPUT 'http://localhost:9200/defcon/workshop/9' -d '{"user":"admin", "role":"tester", "job":"engineer"}'
-```
-
-<div align="left">Update the document:</div>
-
-```
-curl -XPOST 'http://localhost:9200/defcon/workshop/9' -d '{"user":"administrator", "role":"tester", "job":"engineer"}'
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Searching a doc in an index. Create 2 docs:</div>
-    
-```
-curl -XPOST 'http://localhost:9200/defcon/workshop/' -d '{"user":"abcd", "role":"tester", "job":"engineer"}'
-```
-
-```
-curl -XPOST 'http://localhost:9200/defcon/workshop/' -d '{"user":"abcd", "role":"admin", "job":"engineer"}'
-```
-    
-<div align="left">Then search:</div>
-
-```
-curl -XGET 'http://localhost:9200/defcon/_search?q=user:abcd&pretty'
-```
-
-
-<div align="left">Deleting a doc in an index:</div>
-
-```
-curl -XDELETE 'http://localhost:9200/defcon/workshop/1'
-```
-
-</script>
-        </section>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-## Setting up Logstash
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-![Logstash Overview](images/logstash.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Logstash components
-
-Logstash consists of 3 main components
-
-- Input: Passing logs to process them into machine understandable format
-- Filters: Set of conditionals to perform specific action on a event 
-- Output: Decision maker for processed events/logs
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Basic Logstash configuration
-
-```
-input {
-    stdin {}
-    file {}
-    ...
-}
-
-filter {
-    grok {}
-    date {}
-    geoip {}
-    ...
-}
-
-output {
-   elasticsearch {}
-   email {}
-   ...
-}
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-#### Input
-
-> An input plugin enables a specific source of events to be read by Logstash.
-
-- File
-- Lumberjack
-- S3
-- Beats
-- Stdin
-- Many more.
-[https://www.elastic.co/guide/en/logstash/current/input-plugins.html](https://www.elastic.co/guide/en/logstash/current/input-plugins.html)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-#### Filter
-
-> A filter plugin performs intermediary processing on an event. Filters are often applied conditionally depending on the characteristics of the event.
-
-- CSV
-- GeoIP
-- Mutate
-- Grok
-- Many More.
-[https://www.elastic.co/guide/en/logstash/current/filter-plugins.html](https://www.elastic.co/guide/en/logstash/current/filter-plugins.html)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-#### Output
-
-> An output plugin sends event data to a particular destination. Outputs are the final stage in the event pipeline.
-
-- Elasticsearch
-- Email
-- Stdout
-- S3, file
-- HTTP
-- Many More. 
-[https://www.elastic.co/guide/en/logstash/current/output-plugins.html](https://www.elastic.co/guide/en/logstash/current/output-plugins.html)
-</script>
-        </section>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-### Installing logstash
-(hands on)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-To install logstash package run the command below
-
-```
-sudo dpkg -i /home/ninja/pkgs/logstash.deb
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Basic logstash pipeline 
-
-<div align="left">A quick test to check your logstash installation:</div>
-
-```
-sudo /opt/logstash/bin/logstash -e 'input { stdin {} } output { stdout {} }'
-```
-</script>
-        </section>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-### A quick primer on Grok filters
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-- The syntax for a grok pattern is `%{SYNTAX:SEMANTIC}`
-- `SYNTAX` is the name of the pattern that will match your text.
-    - For example: `1337` will be matched by the `NUMBER` pattern, `192.168.123.12` will be matched by the `IP` pattern.
-- SEMANTIC is the identifier you give to the piece of text being matched.
-E.g. `1337` could be the count and `192.168.123.12` could be a `client` making a request
-
-```
-%{NUMBER:count} 
-%{IP:client}
-```
-
-<aside class="notes"><p>Grok is based on pre created regex patterns</p>
-</aside></script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Example grok
-
-<div align="left">For the following log event:</div>
-
-```
-55.3.244.1 GET /index.html 15824 0.043
-```
-
-<div align="left">This would be the matching grok:</div>
-
-```
-%{IP:client} %{WORD:method} %{URIPATHPARAM:request} %{NUMBER:bytes} %{NUMBER:duration}
-```
-
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-#### Consider the following Apache Log Event
-
-<div align="left">123.249.19.22 - - [01/Feb/2015:14:12:13 +0000] "GET /manager/html HTTP/1.1" 404 448 "-" "Mozilla/3.0 (compatible; Indy Library)"</div>
-
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-Using a regular expression!!
-
-![Apache RegEx](images/apacheregex.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-Using Grok filter patterns :)
-
-```
-%{IPV4} %{USER:ident} %{USER:auth} \[%{HTTPDATE:timestamp}\] "(?:%{WORD:verb} %{NOTSPACE:request}(?: HTTP/%{NUMBER:httpversion})?)" %{NUMBER:response} (?:%{NUMBER:bytes}|-)
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-Things can get even more simpler using an *inbuilt* grok :) :) 
-
-```
-%{COMBINEDAPACHELOG}
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Available Logstash Grok Patterns 
-- [https://grokdebug.herokuapp.com/patterns](https://grokdebug.herokuapp.com/patterns)
-- [http://grokconstructor.appspot.com/](http://grokconstructor.appspot.com/)
-- [https://github.com/logstash-plugins/logstash-patterns-core/blob/master/patterns/grok-patterns](https://github.com/logstash-plugins/logstash-patterns-core/blob/master/patterns/grok-patterns)
-- [https://github.com/clay584/logstash_configs](https://github.com/clay584/logstash_configs)
-</script>
-        </section>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-### Apache log sample with elasticsearch
-(hands on)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-Let's parse some Apache logs in elasticsearch using logstash
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-Create a logstash config file using the following command:
-
-```
-sudo vi /etc/logstash/conf.d/apache.conf
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-```
-input {
-    file {
-        path => "/home/ninja/log-samples/access.log"
-        start_position => beginning
-        ignore_older => 0
-    }
-}
-filter {
-    grok {
-        match => { "message" => "%{COMBINEDAPACHELOG}"}
-    }
-    geoip {
-        source => "clientip"
-    }
-}
-output {
-    elasticsearch {
-            hosts => ["localhost:9200"]
-            index => "apache-logs"
-    }
-    #stdout {}
-}
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-Then provide the config to logstash to start the pipeline
-
-```
-sudo /opt/logstash/bin/logstash -f /etc/logstash/conf.d/apache.conf
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-Then check the elasticsearch head plugin
-
-```
-http://elkhost.defcon:9200/_plugin/head
-```
-</script>
-        </section>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-## Setting up Kibana
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-> Kibana is an open source analytics and visualization platform designed to work with Elasticsearch. You use Kibana to search, view, and interact with data stored in Elasticsearch indices
-</script>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-### Installing Kibana
-(hands on)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">To install the Kibana package, run the command below:</div>
-
-```
-sudo dpkg -i /home/ninja/pkgs/kibana.deb
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Basic Kibana configuration
-
-Just for reference, Here is the kibana config file:
-
-```
-sudo vi /opt/kibana/config/kibana.yml
-```
-
-<aside class="notes"><p>Kibana works out of the box support with Elasticsearch</p>
-</aside></script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Uncomment and change the server address to access the kibana dashboard</div>
-
-```
-server.host: "0.0.0.0"
-```
-
-<div align="left">Then start the kibana service by running</div>
-
-```
-sudo service kibana start
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-Kibana Dashboard
-```
-http://elkhost.defcon:5601/
-```
-</script>
-        </section>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-### Understanding the Kibana UI
-
-**Index Selection**
-
-![](images/k-1.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-**Adding multiple indices**
-
-![](images/k-2.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-**Discovery**
-
-![](images/k-3.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-**Mapped log in JSON format**
-
-![](images/k-4.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-**Visualize**
-
-![](images/k-5.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-**Selecting the search source**
-
-![](images/k-6.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-**Creating a pie chart**
-
-![](images/k-7.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-**Discover**
-
-![](images/k-9.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-**Status**
-
-![](images/k-10.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-**Import/Export**
-
-![](images/k-11.png)
-</script>
-        </section>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-Throughout our exercises, did you notice anything missing?
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-### Securing Elasticsearch & Kibana
-
-- By default elasticsearch and kibana doesn't have security
-- We are setting up basic authentication using `htpasswd` and `nginx` reverse proxy
-- The commercial product called `shield` is available from company. 
-- `Search Guard` is an alternative open source project for `shield`.
-</script>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-### Basic Authentication setup for Elasticsearch & Kibana
-(hands on)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-Installing `nginx` and `apache2-utils`.
-
-(It's already installed in the virtual machine)
-
-```
-sudo apt-get install nginx apache2-utils -y
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-To create basic authentication user and password.
-
-```
-sudo htpasswd -c /etc/nginx/htpasswd.users elkadmin
-```
-
-
-```
-Password : D3fc0nN!nj@
-Confirm Password : D3fc0nN!nj@
-```
-
-<aside class="notes"><p><code>elkadmin</code> is the username and password is <code>D3fc0nN!nj@</code></p>
-</aside></script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Then edit the configuration file of nginx using:</div>
-
-```
-sudo vi /etc/nginx/sites-available/default
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-```
-server {
-    listen 80; #for Kibana
-
-    server_name localhost;
-
-    auth_basic "Restricted Access";
-    auth_basic_user_file /etc/nginx/htpasswd.users;
-
-    location / {
-        proxy_pass http://localhost:5601;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;        
-    }
-}
-
-server {
-    listen 8080; #for Elasticsearch
-
-    server_name localhost;
-
-    auth_basic "Restricted Access";
-    auth_basic_user_file /etc/nginx/htpasswd.users;
-
-    location / {
-        proxy_pass http://localhost:9200;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Restart the nginx service:</div>
-
-```
-sudo service nginx restart
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Open the `elasticsearch.yml` and add a host restriction:</div>
-
-```
-sudo vi /etc/elasticsearch/elasticsearch.yml
-```
-
-<div align="left">Restrict ES access to localhost:</div>
-
-```
-network.host: localhost
-```
-
-<div align="left">Then restart the service:</div>
-
-```
-sudo service elasticsearch restart
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Add the authentication credentials in Kibana:</div>
-
-```
-sudo vi /opt/kibana/config/kibana.yml
-```
-
-<div align="left">Modify the following entry:</div>
-
-```
-server.host: "localhost"
-```
-
-<div align="left">Then restart the kibana service:</div>
-
-```
-sudo service kibana restart
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Test the changes in Elasticsearch and Kibana by navigating to:</div>
-
-```
-http://elkhost.defcon:80
-```
-
-```
-http://elkhost.defcon:8080
-```
-</script>
-        </section>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-# Backing up Elasticsearch using Curator
-<small>[15 minutes]</small>
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-### What is Curator ?
-
-> Elasticsearch Curator helps you curate or manage your indices. 
-> Supports a variety of actions from delete a snapshot to shard allocation routing.
-
-<br />
-
-> This is an additional software bundle that you install on top of Elasticsearch.
-</script>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-### Curator Installation
-
-Curator is already installed in the virtual machine
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">To install curator</div>
-
-```
-sudo apt-get install python-pip -y
-sudo pip install elasticsearch-curator
-```
-
-<aside class="notes"><p>There is an alternate method using apt-get install as well.
-<br /></p>
-<pre><code>wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -</code></pre><br />
-```
-echo "deb http://packages.elastic.co/curator/3/debian stable main" | sudo tee -a /etc/apt/sources.list.d/curator.list
-```
-<br />
-```
-sudo apt-get update && sudo apt-get install python-elasticsearch-curator -y
-```</aside></script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-(hands on)<br />
-<div align="left">Create a directory to keep all the backups</div>
-
-```
-sudo mkdir -p /var/backups/elasticsearch/
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Change the ownership of the directory to</div>
-
-```
-sudo chown elasticsearch:elasticsearch -R /var/backups/elasticsearch/
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Add the backups path to the elasticsearch configuration</div>
-
-```
-sudo vi /etc/elasticsearch/elasticsearch.yml
-```
-
-```
-path.repo: /var/backups/elasticsearch/
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Then restart the elasticsearch service</div>
-
-```
-sudo service elasticsearch restart
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-Stop the second Elasticsearch node that we created earlier
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Before we create backups/restores, we need to create a repo in elasticsearch</div>
-<br />
-<div align="left">Run the below command to create a `backup` repository in elasticsearch</div>
-
-```
-curl -XPUT 'http://localhost:9200/_snapshot/backup' -d '{
-"type": "fs",
-"settings": {
-"location": "/var/backups/elasticsearch/",
-"compress": true
-}
-}'
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">To snapshot an index called `apache-logs` into a repository `backup`</div>
-
-```
-curator snapshot --name=apache_logs_snapshot --repository backup indices --prefix apache-logs
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">To see all snapshots in the `backup` repository</div>
-
-```
-curator show snapshots --repository backup
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">To restore a snapshot from curator</div>
-
-```
-curl -XPOST 'http://localhost:9200/_snapshot/backup/apache_logs_snapshot/_restore'
-```
-</script>
-        </section>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-### Restore some sample logs for creating advanced dashboards
-(hands on)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Unzip the log sample called `filebeat.tar.gz` and move the logs to backups directory</div>
-
-```
-sudo tar -xvf /home/ninja/log-samples/filebeat.tar.gz -C /var/backups/elasticsearch/
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Check the snapshot name</div>
-
-```
-curator show snapshots --repository backup
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Then use curator to restore the logs to the elasticsearch</div>
-
-```
-curl -XPOST 'http://localhost:9200/_snapshot/backup/filebeat_logs_snapshot/_restore'
-```
-</script>
-        </section>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-Check the head plugin to see the updated logs from import
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-# Alerting & Attack patterns dashboard
-<small>[30 minutes]</small>
-</script>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-## Alerting
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### What is alerting for ELK stack?
-
-> We can set up a notification system to let users/admins know that a pattern match has occurred.
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### How is this achieved?
-
-- Logstash output plugin alerting via (Email, Pager duty, JIRA, etc.)
-- Elasticsearch commercial product - Watcher
-- An open source alerting for elasticsearch by Yelp called `elastalert`
-- Custom scripts
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Creating an alert for DDoS attack on SSH Logs
-(hands on)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Create a new log configuration using</div>
-
-```
-sudo vi /etc/logstash/conf.d/ddos.conf
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-```
-input {
-    file {
-        path => '/home/ninja/log-samples/ddos.log'
-        start_position => "beginning"
-        ignore_older => 0
-    }
-}
-
-filter {
-
-
-grok {
-    add_tag => [ "valid" ]
-
-    match => [
-      "message", "%{SYSLOGTIMESTAMP:syslog_date} %{SYSLOGHOST:syslog_host} %{DATA:syslog_program}(?:\[%{POSINT}\])?: %{WORD:login} password for %{USERNAME:username} from %{IP:ip} %{GREEDYDATA}",
-      "message", "%{SYSLOGTIMESTAMP:syslog_date} %{SYSLOGHOST:syslog_host} %{DATA:syslog_program}(?:\[%{POSINT}\])?: message repeated 2 times: \[ %{WORD:login} password for %{USERNAME:username} from %{IP:ip} %{GREEDYDATA}",
-      "message", "%{SYSLOGTIMESTAMP:syslog_date} %{SYSLOGHOST:syslog_host} %{DATA:syslog_program}(?:\[%{POSINT}\])?: %{WORD:login} password for invalid user %{USERNAME:username} from %{IP:ip} %{GREEDYDATA}",
-      "message", "%{SYSLOGTIMESTAMP:syslog_date} %{SYSLOGHOST:syslog_host} %{DATA:syslog_program}(?:\[%{POSINT}\])?: %{WORD:login} %{WORD:auth_method} for %{USERNAME:username} from %{IP:ip} %{GREEDYDATA}"
-    ]
-  }
-
-
-  mutate {
-    remove_tag => [ "valid" ]
-    lowercase => [ "login" ]
-  }
-  
-
-  date {
-    match => [ "syslog_date", "MMM  d HH:mm:ss", "MMM dd HH:mm:ss", "ISO8601" ]
-    timezone => "Europe/Helsinki"
-  }
-
-  geoip {
-    source => "ip"
-  }
-
-  throttle {
-    before_count => 0
-    after_count => 5
-    period => 5
-    key => "%{ip}"
-    add_tag => "throttled"
-  }
-}
-
-output {
-  if "throttled" in [tags] {
-    email {
-        subject => "DDoS attack on %{host}"
-        to => "root"
-        via => "sendmail"
-        body => "Alert on %{host} from %{ip} :\n\n%{message}"
-        #options => { "location" => "/usr/sbin/sendmail" }
-
-    }
-  }
-    elasticsearch { 
-    hosts => ["localhost:9200"]
-    index => "DDoS"
-} 
-}
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-<div align="left">Load the DDoS config file</div>
-
-```
-sudo /opt/logstash/bin/logstash -f /etc/logstash/conf.d/ddos.conf
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-- Check the mailbox of `root` user 
-
-```
-sudo -i
-
-mail
-```
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Other options
-Elastalert (https://elastalert.readthedocs.io/en/latest/)
-<br />
-<br />
-`Watcher` is another commercial product for alerting on top of Elasticsearch
-</script>
-        </section>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-## Dashboards for Attack Patterns
-(hands on)
-
-<aside class="notes"><p>We have already imported logs to Elasticsearch using curator. <br />
-Now create some advanced dashboards for attack patterns using Kibana</p>
-</aside></script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Web Attack Dashboard
-
-![Web Attack Dashboard](images/kibana-web-dashboard.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### SSH Attack Dashboard
-
-![SSH Attack Dashboard](images/kibana-ssh-dashboard.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Combined Attack Dashboard
-
-![Attack Dashboard](images/kibana-attack-dashboard.png)
-</script>
-        </section>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-### Pre-created dashboards
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-#### Import the JSON which is already existing in your folder
-
-1. Go to the kibana settings
-2. Select import 
-3. Select the JSON file `/dashboards/all-kibana.json`
-</script>
-        </section>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-# Ansible Playbook for the entire setup
-<small>[10 minutes]</small>
-
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-# What is Ansible?
-
->  Simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs.
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-## What is an Ansible playbook?
-
-> playbooks are Ansible's configuration, deployment, and orchestration language (written in YAML). They can describe a policy that you want your remote systems to enforce, or a set of steps in a general IT process.
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-## A playbook for our setup
-
-> We created a plug and play ansible playbook, which helps to build and reproduce the same environment within minutes by provisioning in any cloud and stack.
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-# General Best Practice
-
-### Elasticsearch Best Practice
-- set `$ES_HEAP_SIZE` env var to 1/2 of RAM (but < 32GB)
-- Disable memory swapping by enabling `bootstrap.mlockall`
-- Set user's file `ulimit` to `unlimited` (Need reboot to check)
-	- You can check with an API call as well `/_nodes/process`
-- Use the default configuration and make small changes as required
-- Multicast is great, but when you are going to production make sure to use `Unicast` discovery mode
-- To eliminate the "Split-brain" problem use 3 lower resource master-eligible nodes in larger cluster environments (dedicated)
-- You don't need beefy machines, simple machines are ok due to the distributed nature of elasticsearch
-- Add lightweight client nodes (no data)
-- Use Snapshot and Restore. This is very useful (but different from `replication`)
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-### Logstash Best Practice
-
-- Watch out for Grok Filter data (GREEDYDATA) as they use a lot of resources especially CPU and Memory. Try to get as specific as possible
-- Test your configuration with `-e` `input{...}... output{...}`
-- Use `-b` flag to send bulk requests to elasticsearch
-- Use `-w` flag to utilise multiple cores. This is especially useful for multi core and bulk processing
-- Use the generator input for benchmarking (https://github.com/matejzero/logstash-benchmark) and to understand performance and optimisation metrics
-- If something goes wrong try `-- debug` for more detailed output (don't forgot to turn this off when you are done)
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-### Kibana Best Practice
-
-- Tune Queries in elasticsearch for maximum performance
-- Configuring number of threads in pool
-- Save and Export dashboards as a JSON File for reuse
-- Deploy a proxy so that you can do basic authentication and other load balancing services
-- While Kibana is an exploration tool, make sure you watch out for over-eager users affecting performance
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-### Production 
-
-- Access Control / Security
-	- use nginx/apache to setup basic authentication
-	- You can block `POST` /  `PUT` / `DELETE` operations
-	- Disable Scripting (Version < 1.2)
-	`script.disable_dynamic: true`
-	- Disable destructive actions
-	`action.destructive_requires_name: true`
-	- Use aliases to allow users access to subsets of indices
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-- VM vs Metal
-	- VM's are convenient (Auto scaling, no management, etc)
-	- Bare metal is generally more configurable and higher in performance
-	- Metal can utilize SSD's
-	- Cloud VM's can suffer from `noisy neighbors` 
-	- But you should start using what you're most familiar with!
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-- Disks
-	- Spinning disk's are cheaper per GB
-	- SSDs have better IOPS
-	- SSDs are cheaper wrt: IOPS
-	- SSD manufacturing tolerance can vary (vendor based)
-	- SAN / NAS can work, if IOPS are sufficient (throughput, iops, etc)
-	- Don't necessarily need RAID, ES handles redundancy
-		- But striping can help with performance
-		- You can use shards and replicas in ES
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-### Security 
-
-- Harden the base server with traditional security techniques
-- Use SSH key for login 
-- Remove root login
-- Use randomly generated passwords
-```
-openssl rand -base64 24
-```
-- Enable the host firewall and allow only connections from specific IPs
-- Use SSL certificates and enable HTTPS for Elasticsearch, Logstash & Kibana (E.g.: Lets encrypt)
-- Use search guard for granular permissions and role based authentication for ELK (Shield is an alternative)
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-### Monitoring Services
-
-- Enable service level monitoring for Elasticsearch, Logstash and Kibana 
-- Use monit (or) uptime robot for monitoring services (you can also use Icinga}
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-# Pentesting the infrastructure
-(what does an attacker see?)
-
-<small>[10 minutes]</small>
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-## The Why?
-A penetration testing exercise was undertaken to check if there was a possibility of gaining unauthorized access to the setup
-</script>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-## Black Box Penetration Testing
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Port scanning
-![Port scan to discover services](images/pentest/nmapscan.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Service enumeration
-![Service enumeration scan](images/pentest/serviceenum.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### HTTP basic Auth on ports 80 and 8080
-![HTTP basic Auth](images/pentest/httpAuth.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Attempted brute force
-Multiple dictionaries were tried against the HTTP Basic Auth
-![Hydra HTTP Basic Brute Force](images/pentest/hydrapasscrack.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Attempted brute force
-Multiple dictionaries were tried against SSH as well
-![Hydra SSH Brute Force](images/pentest/hydrasshpasscrack.png)
-</script>
-        </section>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-## Grey Box Penetration Testing
-App credentials were provided
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Verbose Errors
-![Verbose Kibana stack traces](images/pentest/kibana_verbose_error.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### Credential Leakage through MiTM
-
-![Request Response having the Basic Auth header](images/pentest/BasicAuthOverHTTP.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-![MITM decoded password](images/pentest/BasicAuthOverHTTP-2.png)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-Drop us a note if you want the complete pentest report<br /> <br />
-riyaz@appsecco.com
-</script>
-        </section>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-# ELK - Exercise with network logs
-<small>[30 minutes]</small>
-</script>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-## Stack Flow
-
-#### CSV firewall log(network.log) -> logstash(network.conf) -> elasticsearch -> kibana(kibana-network.json)
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-- `network.log` file is at `/home/ninja/log-samples/network.log`
-- `network.conf` file is at `/home/ninja/exercise/network.conf` for logstash configuration
-- Build your own dashboard using the log data
-- We created one. If you want to use, import the `/dashboards/kibana-network.json`
-- Happy ELK!
-</script>
-        </section>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-![Network Dashboard](images/network-dashboard.png)
-</script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-<aside class="notes"><p>ELK can also be used to do other amazing things like correlate password dumps for example and give a visual statistical model of the data contained in the dump.
-<br />
-There is a list of user names and passwords at <code>/home/ninja/log-samples/pwd-dump.txt</code>. As and additional exercise, create a dashboard using this file and build statistical dashboard.</p>
-</aside></script>
-      </section>
-      <section>
-        <section data-markdown>
-          <script type="text/template">
-### References
-
-* https://www.elastic.co
-* https://www.elastic.co/videos
-* http://logz.io/blog
-* https://www.loggly.com/blog/
-* http://kibana.logstash.es/
-* https://github.com/clay584
-* http://www.slideshare.net/akashm/checklistforsecuringlinuxwebserverin10stepsorless
-* http://jasonwilder.com/blog/2012/01/03/centralized-logging/
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### References (cond.)
-
-* https://qbox.io/blog/welcome-to-the-elk-stack-elasticsearch-logstash-kibana
-* https://www.peerlyst.com/posts/security-monitoring-and-attack-detection-with-elasticsearch-logstash-and-kibana-martin-boller
-* http://www.slideshare.net/prajalkulkarni/attack-monitoring-using-elasticsearch-logstash-and-kibana
-* https://ruin.io/2015/elk-in-production/
-* https://blog.codecentric.de/en/2014/05/elasticsearch-indexing-performance-cheatsheet/
-* http://elasticsearch-cheatsheet.jolicode.com/
-</script>
-        </section>
-        <section data-markdown>
-          <script type="text/template">
-### References (cond.)
-
-
-* http://joelabrahamsson.com/elasticsearch-101/
-* http://hadooptutorials.co.in/tutorials/elasticsearch/real-time-alerting-using-elasticsearch-watcher.html
-* https://speakerdeck.com/untergeek/a-deeper-look-at-the-elk-stack-elasticsearch-logstash-and-kibana
-* http://www.elasticsearchtutorial.com/basic-elasticsearch-concepts.html
-* http://blog.scottlogic.com/2014/12/19/elk-3-things-i-wish-id-known.html
-* https://thepracticalsysadmin.com/performance-tuning-elk-stack/
-</script>
-        </section>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
-# Q & A
-
-@madhuakula <br />
-@riyazwalikar <br />
-@appseccouk <br /></script>
-      </section>
+<h3 id="routing">Routing</h3>
+<blockquote>
+<p>A mechanism in Elasticsearch that identifies which shard a particular document resides in.</p>
+</blockquote>
+<h3 id="near-real-time">Near real time</h3>
+<blockquote>
+<p>Elasticsearch is a near real time search platform. </p>
+<p>What this means is there is a slight latency (normally one second) from the time you index a document until the time it becomes searchable.</p>
+</blockquote>
+
+                                
+                                </section>
+                            
     </div>
-  </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
 
-  <script src="./js/reveal.js"></script>
+                        </div>
+                    </div>
+                
+            </div>
 
-  <script>
-    function extend() {
-      var target = {};
-      for (var i = 0; i < arguments.length; i++) {
-        var source = arguments[i];
-        for (var key in source) {
-          if (source.hasOwnProperty(key)) {
-            target[key] = source[key];
-          }
-        }
-      }
-      return target;
-    }
+            
+                
+                
+                <a href="setup.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Setup">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
 
-    // Optional libraries used to extend on reveal.js
-    var deps = [
-      { src: './plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-      { src: './plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-      { src: './plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
-      { src: './plugin/zoom-js/zoom.js', async: true },
-      { src: './plugin/notes/notes.js', async: true },
-      { src: './plugin/math/math.js', async: true }
-    ];
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Setup","level":"1.2","depth":1,"path":"setup.md","ref":"setup.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["ga"],"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-15752161-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2020-06-01T10:14:35.047Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-01T11:38:35.474Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
 
-    // default options to init reveal.js
-    var defaultOptions = {
-      controls: true,
-      progress: true,
-      history: true,
-      center: true,
-      transition: 'default', // none/fade/slide/convex/concave/zoom
-      dependencies: deps
-    };
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
 
-    // options from URL query string
-    var queryOptions = Reveal.getQueryHash() || {};
-
-    var options = extend(defaultOptions, {}, queryOptions);
-  </script>
-
-
-  <script>
-    Reveal.initialize(options);
-  </script>
-  <script type="application/javascript">
-    var doNotTrack = false;
-    if (!doNotTrack) {
-      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
-      ga('create', 'UA-15752161-2', 'auto');
-
-      ga('send', 'pageview');
-    }
-  </script>
-  <script async src='https://www.google-analytics.com/analytics.js'></script>
-</body>
-
+    </body>
 </html>
+

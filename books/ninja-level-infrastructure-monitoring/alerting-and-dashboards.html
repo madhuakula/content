@@ -1,0 +1,502 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Alerting & Dashboards · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ansible-playbook.html" />
+    
+    
+    <link rel="prev" href="backup-elasticsearch.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="setup.html">
+            
+                <a href="setup.html">
+            
+                    
+                    Setup
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="backup-elasticsearch.html">
+            
+                <a href="backup-elasticsearch.html">
+            
+                    
+                    Backup Elasticsearch
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4" data-path="alerting-and-dashboards.html">
+            
+                <a href="alerting-and-dashboards.html">
+            
+                    
+                    Alerting & Dashboards
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="ansible-playbook.html">
+            
+                <a href="ansible-playbook.html">
+            
+                    
+                    Ansible Playbook
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="security-testing.html">
+            
+                <a href="security-testing.html">
+            
+                    
+                    Security Testing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="general-best-practices-checklist.html">
+            
+                <a href="general-best-practices-checklist.html">
+            
+                    
+                    General Best Practices Checklist
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="exercise.html">
+            
+                <a href="exercise.html">
+            
+                    
+                    Exercise
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="alternative-options.html">
+            
+                <a href="alternative-options.html">
+            
+                    
+                    EXTRA: Alternatives
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="elasticsearch-config-checklist.html">
+            
+                <a href="elasticsearch-config-checklist.html">
+            
+                    
+                    EXTRA: Elasticsearch Configuration Checklist
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="references.html">
+            
+                <a href="references.html">
+            
+                    
+                    References
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="license.html">
+            
+                <a href="license.html">
+            
+                    
+                    License
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="q-and-a.html">
+            
+                <a href="q-and-a.html">
+            
+                    
+                    Q&A
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Alerting & Dashboards</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="alerting--attack-patterns-dashboard-30-minutes">Alerting &amp; Attack patterns dashboard [30 minutes]</h1>
+<h2 id="alerting">Alerting</h2>
+<h3 id="what-is-alerting-for-elk-stack">What is alerting for ELK stack?</h3>
+<blockquote>
+<p>We can set up a notification system to let users/admins know that a pattern match has occurred.</p>
+</blockquote>
+<h3 id="how-is-this-achieved">How is this achieved?</h3>
+<ul>
+<li>Logstash output plugin alerting via (Email, Pager duty, JIRA, etc.)</li>
+<li>Elasticsearch commercial product - Watcher</li>
+<li>An open source alerting for elasticsearch by Yelp called <code>elastalert</code></li>
+<li>Custom scripts</li>
+</ul>
+<h3 id="creating-an-alert-for-ddos-attack-on-ssh-logs-hands-on">Creating an alert for DDoS attack on SSH Logs (hands on)</h3>
+<ul>
+<li>Create a new log configuration using <code>sudo vi /etc/logstash/conf.d/ddos.conf</code></li>
+</ul>
+<pre><code>input {
+    file {
+        path =&gt; &apos;/home/ninja/log-samples/ddos.log&apos;
+        start_position =&gt; &quot;beginning&quot;
+        ignore_older =&gt; 0
+    }
+}
+
+filter {
+
+
+grok {
+    add_tag =&gt; [ &quot;valid&quot; ]
+
+    match =&gt; [
+      &quot;message&quot;, &quot;%{SYSLOGTIMESTAMP:syslog_date} %{SYSLOGHOST:syslog_host} %{DATA:syslog_program}(?:\[%{POSINT}\])?: %{WORD:login} password for %{USERNAME:username} from %{IP:ip} %{GREEDYDATA}&quot;,
+      &quot;message&quot;, &quot;%{SYSLOGTIMESTAMP:syslog_date} %{SYSLOGHOST:syslog_host} %{DATA:syslog_program}(?:\[%{POSINT}\])?: message repeated 2 times: \[ %{WORD:login} password for %{USERNAME:username} from %{IP:ip} %{GREEDYDATA}&quot;,
+      &quot;message&quot;, &quot;%{SYSLOGTIMESTAMP:syslog_date} %{SYSLOGHOST:syslog_host} %{DATA:syslog_program}(?:\[%{POSINT}\])?: %{WORD:login} password for invalid user %{USERNAME:username} from %{IP:ip} %{GREEDYDATA}&quot;,
+      &quot;message&quot;, &quot;%{SYSLOGTIMESTAMP:syslog_date} %{SYSLOGHOST:syslog_host} %{DATA:syslog_program}(?:\[%{POSINT}\])?: %{WORD:login} %{WORD:auth_method} for %{USERNAME:username} from %{IP:ip} %{GREEDYDATA}&quot;
+    ]
+  }
+
+
+  mutate {
+    remove_tag =&gt; [ &quot;valid&quot; ]
+    lowercase =&gt; [ &quot;login&quot; ]
+  }
+
+
+  date {
+    match =&gt; [ &quot;syslog_date&quot;, &quot;MMM  d HH:mm:ss&quot;, &quot;MMM dd HH:mm:ss&quot;, &quot;ISO8601&quot; ]
+    timezone =&gt; &quot;Europe/Helsinki&quot;
+  }
+
+  geoip {
+    source =&gt; &quot;ip&quot;
+  }
+
+  throttle {
+    before_count =&gt; 0
+    after_count =&gt; 5
+    period =&gt; 5
+    key =&gt; &quot;%{ip}&quot;
+    add_tag =&gt; &quot;throttled&quot;
+  }
+}
+
+output {
+  if &quot;throttled&quot; in [tags] {
+    email {
+        subject =&gt; &quot;DDoS attack on %{host}&quot;
+        to =&gt; &quot;root&quot;
+        via =&gt; &quot;sendmail&quot;
+        body =&gt; &quot;Alert on %{host} from %{ip} :\n\n%{message}&quot;
+        #options =&gt; { &quot;location&quot; =&gt; &quot;/usr/sbin/sendmail&quot; }
+
+    }
+  }
+    elasticsearch { 
+    hosts =&gt; [&quot;localhost:9200&quot;]
+    index =&gt; &quot;DDoS&quot;
+} 
+}
+</code></pre><ul>
+<li>Load the DDoS config file</li>
+</ul>
+<pre><code>sudo /opt/logstash/bin/logstash -f /etc/logstash/conf.d/ddos.conf
+</code></pre><ul>
+<li>Check the mailbox of <code>root</code> user </li>
+</ul>
+<pre><code>sudo -i
+
+mail
+</code></pre><h3 id="other-options">Other options</h3>
+<ul>
+<li>Elastalert (<a href="https://elastalert.readthedocs.io/en/latest/" target="_blank">https://elastalert.readthedocs.io/en/latest/</a>)</li>
+<li><code>Watcher</code> is another commercial product for alerting on top of Elasticsearch</li>
+</ul>
+<h2 id="dashboards-for-attack-patterns-hands-on">Dashboards for Attack Patterns (hands on)</h2>
+<ul>
+<li>Note: We have already imported logs to Elasticsearch using curator</li>
+<li>Now create some advanced dashboards for attack patterns using Kibana</li>
+</ul>
+<h3 id="web-attack-dashboard">Web Attack Dashboard</h3>
+<p><img src="images/kibana-web-dashboard.png" alt="Web Attack Dashboard"></p>
+<h3 id="ssh-attack-dashboard">SSH Attack Dashboard</h3>
+<p><img src="images/kibana-ssh-dashboard.png" alt="SSH Attack Dashboard"></p>
+<h3 id="combined-attack-dashboard">Combined Attack Dashboard</h3>
+<p><img src="images/kibana-attack-dashboard.png" alt="Attack Dashboard"></p>
+<h3 id="pre-created-dashboards">Pre-created dashboards</h3>
+<h4 id="import-the-json-which-is-already-existing-in-your-folder">Import the JSON which is already existing in your folder</h4>
+<ol>
+<li>Go to the kibana settings</li>
+<li>Select import </li>
+<li>Select the JSON file <code>/dashboards/all-kibana.json</code></li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="backup-elasticsearch.html" class="navigation navigation-prev " aria-label="Previous page: Backup Elasticsearch">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ansible-playbook.html" class="navigation navigation-next " aria-label="Next page: Ansible Playbook">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Alerting & Dashboards","level":"1.4","depth":1,"next":{"title":"Ansible Playbook","level":"1.5","depth":1,"path":"ansible-playbook.md","ref":"ansible-playbook.md","articles":[]},"previous":{"title":"Backup Elasticsearch","level":"1.3","depth":1,"path":"backup-elasticsearch.md","ref":"backup-elasticsearch.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["ga"],"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-15752161-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"alerting-and-dashboards.md","mtime":"2020-06-01T10:40:17.394Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-01T11:38:35.474Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

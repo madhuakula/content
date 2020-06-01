@@ -1,0 +1,567 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>EXTRA: Elasticsearch Configuration Checklist · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="references.html" />
+    
+    
+    <link rel="prev" href="alternative-options.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="setup.html">
+            
+                <a href="setup.html">
+            
+                    
+                    Setup
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="backup-elasticsearch.html">
+            
+                <a href="backup-elasticsearch.html">
+            
+                    
+                    Backup Elasticsearch
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="alerting-and-dashboards.html">
+            
+                <a href="alerting-and-dashboards.html">
+            
+                    
+                    Alerting & Dashboards
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="ansible-playbook.html">
+            
+                <a href="ansible-playbook.html">
+            
+                    
+                    Ansible Playbook
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="security-testing.html">
+            
+                <a href="security-testing.html">
+            
+                    
+                    Security Testing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="general-best-practices-checklist.html">
+            
+                <a href="general-best-practices-checklist.html">
+            
+                    
+                    General Best Practices Checklist
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="exercise.html">
+            
+                <a href="exercise.html">
+            
+                    
+                    Exercise
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="alternative-options.html">
+            
+                <a href="alternative-options.html">
+            
+                    
+                    EXTRA: Alternatives
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.10" data-path="elasticsearch-config-checklist.html">
+            
+                <a href="elasticsearch-config-checklist.html">
+            
+                    
+                    EXTRA: Elasticsearch Configuration Checklist
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="references.html">
+            
+                <a href="references.html">
+            
+                    
+                    References
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="license.html">
+            
+                <a href="license.html">
+            
+                    
+                    License
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="q-and-a.html">
+            
+                <a href="q-and-a.html">
+            
+                    
+                    Q&A
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >EXTRA: Elasticsearch Configuration Checklist</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="elasticsearchyml">elasticsearch.yml</h1>
+<p><strong>Elasticsearch Configuration</strong></p>
+<ul>
+<li>By default <code>elasticsearch.yml</code> comes with out of the box support with default settings. It doesn&apos;t need to be changed too much</li>
+<li>By default the configuration file contains all the required template items. Using there is the best way to start to build a production level Elasticsearch</li>
+</ul>
+<p><strong>Cluster Name</strong></p>
+<ul>
+<li>Do not forget to give your production cluster a name as this is used to discover and auto-join other nodes</li>
+<li>Don&#x2019;t reuse the same cluster names in different environments otherwise you might end up with nodes joining the wrong cluster</li>
+<li>For instance you could use logging-dev, logging-stage and logging-prod for the development, staging, and production clusters</li>
+</ul>
+<pre><code>cluster:
+  name: &lt;NAME OF YOUR CLUSTER&gt;
+</code></pre><p><code>cluster.name: elasticsearch_netmon_prod</code></p>
+<p><strong>Node Name</strong></p>
+<ul>
+<li>You may also want to change the default node name for each node to something like the display hostname </li>
+<li>By default Elasticsearch will randomly pick a Marvel character name from a list of around 3000 names when your node starts up if you haven&apos;t choosen a name</li>
+</ul>
+<pre><code>node:
+  name: &lt;NAME OF YOUR NODE&gt;
+</code></pre><ul>
+<li>The hostname of the machine is provided in the environment variable <code>HOSTNAME</code></li>
+<li>If on your machine you only run a single Elasticsearch node for that cluster you can set the node name to the hostname using the `${...}`` notation</li>
+</ul>
+<pre><code>node:
+  name: ${HOSTNAME}
+</code></pre><p><code>node.name: elasticnetstack-6</code></p>
+<p><strong>Node Rack</strong></p>
+<ul>
+<li>This is used to specify special attributes like the location of the rack where the node is located</li>
+<li>It also appears in the JSON for Elasticsearch</li>
+</ul>
+<pre><code>node.rack: r1
+</code></pre><p><strong>Paths</strong></p>
+<ul>
+<li>In production use you will almost certainly want to change paths for data and log files</li>
+</ul>
+<pre><code>path:
+  logs: /var/log/elasticsearch
+  data: /var/data/elasticsearch
+  conf: /usr/local/etc/elasticsearch
+</code></pre><p><strong>Memory</strong></p>
+<ul>
+<li>This is one of the key components of Elasticsearch</li>
+<li>Most operating systems try to use as much memory as possible for file system caches and eagerly swap out unused application memory, possibly resulting in the Elasticsearch process being swapped</li>
+<li><p>Swapping is very bad for performance and for node stability, so it should be avoided at all costs</p>
+</li>
+<li><p>Disable swap</p>
+<ul>
+<li>The simplest option is to completely disable swap</li>
+<li>Usually Elasticsearch is the only service running on a box and its memory usage is controlled by the ES_HEAP_SIZE environment variable. There should be no need to have swap enabled</li>
+<li>On Linux systems, you can disable swap temporarily by running: <code>sudo swapoff -a</code></li>
+<li>To disable it permanently, you will need to edit the <code>/etc/fstab</code> file and comment out any lines that contain the word <code>swap</code></li>
+</ul>
+</li>
+<li><p>Configure swappiness</p>
+<ul>
+<li>The second option is to ensure that the sysctl value vm.swappiness is set to 0. This reduces the kernel&#x2019;s tendency to swap and should not lead to swapping under normal circumstances while still allowing the whole system to swap in emergency conditions</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>From kernel version 3.5-rc1 and above a swappiness of 0 will cause the OOM killer to kill the process instead of allowing swapping. You will need to set swappiness to 1 to still allow swapping in emergencies</p>
+</blockquote>
+<ul>
+<li>mlockall<ul>
+<li>The third option is to use <code>mlockall</code> on Linux/Unix systems preventing any Elasticsearch memory from being swapped out </li>
+</ul>
+</li>
+</ul>
+<pre><code>bootstrap.mlockall: true
+</code></pre><blockquote>
+<p>mlockall might cause the JVM or shell session to exit if it tries to allocate more memory than is available!</p>
+</blockquote>
+<p><code>curl http://localhost:9200/_nodes/process?pretty</code></p>
+<ul>
+<li>The most probable reason, on Linux/Unix systems, is that the user running Elasticsearch doesn&#x2019;t have permission to lock memory</li>
+<li>This can be granted by running <code>ulimit -l unlimited</code> as root before starting Elasticsearch</li>
+</ul>
+<p><strong>Network</strong></p>
+<ul>
+<li>Elasticsearch binds to localhost only by default</li>
+<li>Set the bind address to a specific IP (IPv4 or IPv6)</li>
+<li>This is one of the most simple and best way to protect the data accessing by other users from elasticsearch</li>
+<li>You can use an IP address, hostname or an array of any combination of these</li>
+</ul>
+<pre><code>network.host: 127.0.0.1
+</code></pre><ul>
+<li>You can also specify a custom port based on your use case</li>
+</ul>
+<pre><code>http.port: 9200
+</code></pre><p><strong>Discovery</strong></p>
+<ul>
+<li>Elasticsearch is a peer to peer based system, nodes communicate with one another directly if operations are delegated / broadcast</li>
+<li>In order to join a cluster, a node needs to know the hostname or IP address of at least some of the other nodes in the cluster</li>
+<li>This setting provides the initial list of other nodes that this node will try to contact, it accepts IP addresses or hostnames</li>
+<li>Defaults to <code>[&quot;127.0.0.1&quot;, &quot;[::1]&quot;]</code></li>
+</ul>
+<pre><code>discovery.zen.ping.unicast.hosts: [&quot;host1&quot;, &quot;host2&quot;]
+</code></pre><ul>
+<li>All the main APIs (index, delete, search) do not communicate with the master node</li>
+<li>The responsibility of the master node is to maintain the global cluster state and act if nodes join or leave the cluster by reassigning shards</li>
+<li>Each time a cluster state is changed the state is made known to the other nodes in the cluster</li>
+<li>To prevent &quot;split brain&quot; by configuring as the smallest possible majority of nodes to be master (total number of (nodes / 2 )+ 1)</li>
+</ul>
+<pre><code>discovery.zen.minimum_master_nodes: 3
+</code></pre><ul>
+<li>Example configuration</li>
+</ul>
+<pre><code>discovery.zen.minimum_master_nodes: 5
+discovery.zen.ping.unicast.hosts: 10.64.14.66,10.64.3.249,10.9.248.64,100.64.15.128,10.9.240.151,10.9.212.223,10.65.9.238,10.65.3.43
+discovery.zen.ping.multicast.enabled: false
+</code></pre><p><strong>Gateway</strong></p>
+<ul>
+<li>The local gateway module stores the cluster state and shard data across full cluster restarts</li>
+<li>This must be set on every data node in the cluster</li>
+</ul>
+<pre><code>gateway.recover_after_nodes: 3
+</code></pre><blockquote>
+<p>These settings only take effect on a full cluster restart</p>
+</blockquote>
+<p><strong>Various-Other</strong></p>
+<ul>
+<li>Disable starting multiple nodes on a single system</li>
+</ul>
+<pre><code>node.max_local_storage_nodes: 1
+</code></pre><ul>
+<li>Require explicit names when deleting indexes<ul>
+<li>This prevents accidental deletion since explicit names are now required</li>
+</ul>
+</li>
+</ul>
+<pre><code>action.destructive_requires_name: true
+</code></pre><ul>
+<li>To setup master and data nodes<ul>
+<li>This is helpful when you are building a cluster for production</li>
+</ul>
+</li>
+</ul>
+<pre><code>node.master: true
+node.data: true
+</code></pre><ul>
+<li>Index related configuration changes<ul>
+<li>To predefine each index shard, by default elasticsearch creates 5 primary shards</li>
+</ul>
+</li>
+</ul>
+<pre><code>index.number_of_shards: 5
+</code></pre><ul>
+<li>This setting is to define the shard replica<ul>
+<li>One of the most important configuration settings for High Availability environments</li>
+<li>This can be used to take a backup within elasticsearch using the shard functionality</li>
+</ul>
+</li>
+</ul>
+<pre><code>index.number_of_replicas: 1
+</code></pre><ul>
+<li>This is to dynamically auto update the elastic search indexes<ul>
+<li>Which helps in performance best practice</li>
+</ul>
+</li>
+</ul>
+<pre><code>index.mapper.dynamic: true
+</code></pre><ul>
+<li>This is a default setting in elasticsearch which helps to create an index automatically based on the logstash output</li>
+</ul>
+<pre><code>action.auto_create_index: true
+</code></pre><ul>
+<li>This disables the ability to delete all indexes at a single time</li>
+</ul>
+<pre><code>action.disable_delete_all_indices: true
+</code></pre><h3 id="example-configuration-samples">Example configuration samples</h3>
+<p><a href="https://gist.github.com/zsprackett/8546403" target="_blank">https://gist.github.com/zsprackett/8546403</a></p>
+<p><a href="https://joinup.ec.europa.eu/svn/opencities/tags/opencities-core/release-3.4.3/core-module/src/main/resources/elasticsearch.yml" target="_blank">https://joinup.ec.europa.eu/svn/opencities/tags/opencities-core/release-3.4.3/core-module/src/main/resources/elasticsearch.yml</a></p>
+<h3 id="references">References</h3>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-configuration.html" target="_blank">https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-configuration.html</a></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="alternative-options.html" class="navigation navigation-prev " aria-label="Previous page: EXTRA: Alternatives">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="references.html" class="navigation navigation-next " aria-label="Next page: References">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"EXTRA: Elasticsearch Configuration Checklist","level":"1.10","depth":1,"next":{"title":"References","level":"1.11","depth":1,"path":"references.md","ref":"references.md","articles":[]},"previous":{"title":"EXTRA: Alternatives","level":"1.9","depth":1,"path":"alternative-options.md","ref":"alternative-options.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["ga"],"pluginsConfig":{"ga":{"configuration":"auto","token":"UA-15752161-2"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"elasticsearch-config-checklist.md","mtime":"2020-06-01T10:45:45.422Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-01T11:38:35.474Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
