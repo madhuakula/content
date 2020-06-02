@@ -4,5 +4,5 @@ date: 2016-11-07
 type: Demo
 event: Madhu Akula
 link: https://www.youtube.com/watch?v=qpysr0I9xpM
-image: ./others-bg.png
+image: ./others-bg.jpg
 ---
